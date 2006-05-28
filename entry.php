@@ -65,11 +65,11 @@ if($_POST['action'] == "new")
     if($_SESSION['admin'])
         $sQuery = sprintf("UPDATE glossary SET state='deleted', user=%s, date=NOW() WHERE id=%s LIMIT 1",
                           smart_quote($_SESSION['admin']),
-                          smart_quote($_POST['id']));
+                          smart_quote($_GET['id']));
     // Users can delete only their records. The deletion is permanent.
     else
         $sQuery = sprintf("DELETE FROM glossary WHERE id=%s AND source=%s LIMIT 1",
-                          smart_quote($_POST['id']),
+                          smart_quote($_GET['id']),
                           smart_quote("mémo de ".$_SESSION['user']));
     mysql_query($sQuery);
     header("Location: index.php?s=".$_GET['s']);
