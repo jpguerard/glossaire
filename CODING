@@ -1,0 +1,172 @@
+Glossary's coding standards
+
+Copyright (C) 2006 Jonathan Ernst
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+===============================================================================
+
+If you want to contribute to this project, please send your patches (using diff -up) to jonathan@ernstfamily.ch
+
+The followin "coding standards" should be followed:
+
+====== Code structure (directories and file names) ======
+  * Included files : includes/*.inc.php
+  * Classes : classes/*.class.php
+  * Files are all lower case and words are separated using underscore ("_")
+
+
+====== Comments ====== 
+  * Don't use shell comments (#). These comments will probably become obsolete in the future
+  * Use // for one-line comments
+  * Use /* */ for multilines comments and file headers
+  * Use /** */ for function and classes documentation
+  * Always put a space after the comment's starting mark
+
+
+====== Use long php tags ====== 
+  * short php tags (<? ?>) can be deactivated using php configuration directives and will probably become obsolete in the future
+  * short php tags are conflicting with <?xml ?> tags used in XHTML for example
+  * so please always use long tags <?php ?>
+
+// TODO: TRANSLATE THE FOLLOWING
+
+====== Variable names and global variables ====== 
+  * les variables fournies par la session, par un formulaire, par les cookies ou par l'url ne doivent en aucun cas être accédée par $nomDeLaVariable. Cette méthode est rendue obsolète par les supeglobales introduites dans php 4.1+ et la configuration par défaut de php empêche leur utilisation (pour que votre code soit facilement portable et fonctionne avec les futures version de php vous ne devez donc plus les utiliser).
+  * le fait d'utiliser les superglobales ($_SESSION, $_REQUEST, etc.) partout dans votre code (ne faîtes pas de copie de ces variables dans des variables temporaires) permet non seulement d'améliorer la sécurité de votre code, mais aussi de savoir à tout moment d'où proviennent les informations que contiennent ces variables. http://ch2.php.net/reserved.variables
+  * nommez vos variables de façon explicite autant que possible (au minimum pour toutes les variables qui ne se trouvent pas dans les superglobales). Vos variables suivront le schéma suivant: var_type+var_name
+  * var_type peut prendre une des valeures suivantes:
+*Scalar types*
+i Integer 
+f Float-point
+s String 
+b Boolean 
+*Compound types*
+a Array 
+o Object 
+*Special type*
+h Handle/Resource 
+- var_name peut prendre n'importe quelle valeur, mais respectez les contraintes suivantes:
+    - la première lettre suivant var_type doit être en majuscule
+    - séparez les différents mots de vos variables par des majuscules (sMyQuery). 
+    - les variables de boucles sont notées $i, $j, $k, etc. 
+    - $sQuery et $hResult sont utilisés pour des requêtes sql et l'identifieur de ressource du résultat respectivement.
+
+
+====== SQL Requests ======
+  * les mots clés doivent être en majuscule et la requête doit être formatée de façon à pouvoir être lue plus facilement.
+<?php 
+$sQuery = "SELECT * 
+           FROM table_name1, 
+                table_name2
+           WHERE name='Kuulest'
+           AND   company='ll'
+           ORDER BY company"; 
+?>
+
+
+====== Indentation ====== 
+  * indeter correctement votre code
+  * ne pas utiliser de tabulations pour réaliser l'indentation
+  * indentez votre code à l'aide de 4 espaces
+
+
+====== Opérateurs ====== 
+  * ajoutez des espaces avant et après les opérateurs
+<?php 
+
+//assignment operators: 
+$a = 5; 
+$sMyString .= "bla bla bla"; 
+$i += 2; 
+
+//logical and comparison operators: 
+if (($name == 'Victor') or ($name == 'Andrei')) { 
+    echo 'Record found!'; 
+} 
+
+//arithmetic operators: 
+$a = (10 * $b) / 20; 
+?>
+
+
+====== Structures de contrôle ======
+
+  * laissez un espace avant et après l'expression conditionnelle
+  * laissez une ligne vide entre les différents blocs de contrôles (si ceux-ci ne sont pas imbriquées
+  * voici quelques exemples
+<?php     
+// if; if..else; if..elseif; 
+if ($a == $b) { 
+    /*code goes here*/ 
+} 
+             
+if ($a == $b) { 
+    /*code goes here*/ 
+}else { 
+    /*code goes here*/ 
+} 
+
+if ($a == $b) { 
+    /*code goes here*/ 
+}elseif ($a == $c) { 
+    /*code goes here*/ 
+} 
+
+// for; foreach; while; 
+// I let additional space after ';' in 'for' structure. 
+for ($i; $i < 10; $i++ ) { 
+    /*code goes here*/ 
+} 
+
+foreach ($arr as $k => $v ) { 
+    /*code goes here*/ 
+} 
+
+while ($i < 10) { 
+    /*code goes here*/ 
+} 
+
+// switch; 
+switch ($age) { 
+    case 19: 
+        echo 'You are in the army now!'; 
+    break; 
+    case 100: 
+        echo 'Incredible!!'; 
+    break; 
+    default: 
+        echo 'Nothing to say!'; 
+} 
+?>
+
+====== Fonctions ======
+  * le nom des fonctions doit contenir un verbe (do_something() au lieu de the_something())
+  * utilisez des minuscules
+  * utiliser un underscore ("_") pour séparer les mots pour les fonctions qui ne sont pas des méthodes de classes
+  * documentez/commentez les fonctions comme en java (/** */)
+<?php 
+/**  
+ *  Connecte l'utilisateur.
+ */ 
+function login($sUserName = 'nobody', $sUserPass = 'nobody') { 
+    /* code goes here */ 
+} 
+?>
+
+
+====== Classes ======
+  * utilisez des noms comme "UtilisateurSysteme" pour nommer vos classes (comme en java)
+  * les méthodes sont également nommée de cette façon: isHappy()
+  * le reste des règles s'applique de la même façon

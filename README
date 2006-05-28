@@ -1,0 +1,42 @@
+Glossary's readme
+
+Copyright (C) 2006 Jonathan Ernst
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+===============================================================================
+
+License
+-------
+See COPYING.
+
+Install
+-------
+* What you need (recommanded)
+ - php 5+
+ - MySql 4.1+
+ - apache 1+
+
+* How-to install
+ - unpack the package
+ - create a MySql database and user
+ - dump the content of db/structure.sql into the database
+ - optionnaly dump the content of db/content.sql.gz into the database
+ - rename includes/config.tpl.php into includes/config.inc.php and edit the file to reflect your configuration
+
+* How-to update
+ - delete everything but includes/config.inc.php
+ - unpack the package
+ - compare includes/config.tpl.php with includes/config.inc.php to see if you are missing some configuration entries
+ - compare db/structure.sql with your current database structure and make changes accordingly

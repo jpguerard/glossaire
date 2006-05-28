@@ -1,0 +1,393 @@
+/* Basic tags */
+body {
+	margin: 0px;
+	background-color: white;
+	font-family: sans-serif;
+	color: black;
+}
+
+#body {
+	margin: 90px 230px 0px 10px;
+	padding: 0px;
+}
+
+a img {
+	border: 0px;
+}
+
+/* Anchors */
+a {
+	color: #0000ff;
+}
+
+a:visited {
+	color: #551a8b;
+}
+
+a:active {
+	color: #ff0000;
+}
+
+/* Basic classes */
+
+.none { /* to add paragraph spacing to various elements for ttys */
+	margin: 0px;
+	padding: 0px;
+}
+
+.invisible { /* stuff that should appear when this css isn't used */
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	height: 0px;
+	visibility: hidden;
+}
+
+.left {
+	margin: 10px;
+	padding: 0px;
+	float: left;
+}
+
+.right {
+	margin: 10px;
+	padding: 0px;
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+/* Common page elements: Header, footer, etc. */
+
+#logo {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	border: 0px;
+	z-index: 10;
+
+	background: url("http://glossaire.traduc.org/images/glossaire_andre_pascual.png") no-repeat;
+	width: 200px;
+	height: 73px;
+}
+
+#logo a img {
+	width: 200px;
+	height: 73px;
+}
+
+#hdr {
+	position: absolute;
+	z-index: 5;
+
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 48px;
+
+	text-align: right;
+	background-color: #475bd2;
+	border-bottom: 1px solid #807d74;
+}
+
+#banner {
+	position: absolute;
+	z-index: 10;
+
+	top: 0px;
+	right: 0px;
+	border: 0px;
+
+	width: 300px;
+	height: 48px;
+}
+
+#banner a img {
+	width: 300px;
+	height: 48px;
+}
+
+#hdrNav {
+	position: absolute;
+	top: 54px;
+	left: 130px;
+
+	margin-left: 84px;
+	text-align: left;
+	vertical-align: middle;
+	font-size: small;
+}
+
+#hdrNav a {
+	color: #000000;
+}
+
+#hdrTitle {
+	height: 48px;
+	padding: 10px 10px 0px 0px;
+	font-weight: bold;
+}
+
+
+/* Search thingy */
+
+#search {
+	font-size: small;
+	margin-bottom: 10px;
+	padding: 10px;
+	background-color: #dddddd;
+}
+
+#search input {
+	border: 1px solid #666666;
+	background-color: #ffffff;
+
+	vertical-align: middle;
+}
+
+
+/* Sidebar */
+
+#sidebar {
+	position: absolute;
+	top: 90px;
+	right: 0px;
+	width: 210px;
+
+	/*margin-right: 10px;*/
+	padding-right: 10px;
+	padding-bottom: 0px;
+	border-left: 1px dashed #dddddd;
+	background-color: #ffffff;
+}
+
+#sidebar p {
+	margin-top: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#sidebar p.section {
+	text-align: center;
+	font-weight: bold;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	color: #ffffff;
+	background-color: #52657b;
+}
+
+#sidebar ul {
+
+  margin: 0em;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  list-style-type: none;
+}
+
+#sidebar ul ul {
+  padding-left: 2em;
+  padding-right: 0em;
+  list-style-type: square;
+}
+
+
+/* Copyright footer */
+
+#copyright {
+	text-align: center;
+	font-size: small;
+	clear: both;
+
+	margin-top: 10px;
+	padding: 5px 0px 5px 0px;
+	color: #aaaaaa;
+}
+
+#copyright a {
+	color: #aaaaff;
+}
+
+#copyright a:visited {
+	color: #ffaaaa;
+}
+
+
+#frontlogo {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+/* Frontpage Sections */
+
+#presentation {
+	padding-top: 1px;
+	clear: both;
+}
+
+#presentationLeft {
+	width: 48%;
+	float: left;
+}
+
+#presentationRight {
+	margin-left: 48%;
+	padding-left: 10px;
+}
+
+/* News Sections */
+
+#news {
+	padding-top: 1px;
+	clear: both;
+}
+
+#newsLeft {
+	width: 48%;
+	float: left;
+}
+
+#newsRight {
+	margin-left: 48%;
+	padding-left: 10px;
+}
+
+#newsLeft h2, #newsRight h2 {
+ border-bottom: 1px solid #99c;
+}
+
+#newsLeft h3, #newsRight h3 {
+ font-size: 105%;
+ margin-bottom: -0.5em;
+}
+
+p.newsitem {
+	clear: left;
+	margin-bottom: 20px;
+}
+
+p.newsitem img.newsicon {
+	float: left;
+	margin: 0px 10px 10px 10px;
+	border: 0px;
+}
+
+
+/* Generic Classes */
+
+div.code {
+	background-color: #e0e0e0;
+	color: #000000;
+	white-space: pre;
+	font-family: monospace;
+}
+
+body {
+  font-size: 77%;
+  margin: 0;
+  padding: 0;
+}
+
+#traducNav {
+ text-align: right;
+ vertical-align: middle;
+ font-size: small;
+}
+
+table {
+ margin-left: auto;
+ margin-right: auto;
+ border-collapse: collapse;
+}
+
+td, th {
+ border: 1px solid #333;
+ padding: 0.1em 0.3em;
+}
+
+th {
+ color: white;
+ background-color: #666;
+ text-align: center;
+}
+
+tr.colorA {
+ background-color: #eee;
+}
+
+tr.colorB {
+ background-color: #ccc;
+}
+
+td.number {
+ text-align: right;
+}
+
+td.perfect {
+ background-color: #00d51d;
+}
+
+td.reserve {
+ background-color: #6284ff;
+}
+
+td.nearlyperfect {
+ background-color: #ffc849;
+}
+
+td.needswork {
+ background-color: red;
+}
+
+td.reservCol {
+  background-color: white;
+  text-align: center;
+}
+
+form {
+  width: 100%
+  margin: 1em 0 0 0;
+}
+
+input, textarea {
+  width: 18em;
+  border: 1px solid;
+  border-color: #666 #ccc #ccc #666;
+  margin-bottom: 0.5em;
+  padding: 2px;
+}
+
+
+input[type=submit] {
+  width: 12em;
+  background-color: #e6e6e6;
+  border-color: #ccc #666 #666 #ccc;
+  margin-left: 1em;
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  width: 1em;
+  height: 1em;	     
+}
+
+textarea:focus, input:focus, .sffocus, .sffocus {
+   background-color: #ffc;
+}
+
+label {
+  float: left;
+  width: 16em;
+}
+
+p.error {
+  font-weight: bold; 
+  color: #f00;
+  border: 1px solid;
+  padding: 6px;
+}
