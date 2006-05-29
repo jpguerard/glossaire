@@ -22,6 +22,80 @@
 require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
 require("./includes/header.inc.php");
+
+
+/**
+ Returns an array containing each of the sub-strings from text that
+ are between openingMarker and closingMarker. The text from
+ openingMarker and closingMarker are not included in the result.
+ This function does not support nesting of markers.
+*/
+function return_substring($text, $openingMarker, $closingMarker)
+{
+    $openingMarkerLength = strlen($openingMarker);
+    $closingMarkerLength = strlen($closingMarker);
+
+    $result = array();
+    $position = 0;
+    while (($position = strpos($text, $openingMarker, $position)) !== false)
+    {
+        $position += $openingMarkerLength;
+        if (($closingMarkerPosition = strpos($text, $closingMarker, $position)) !== false)
+        {
+            $result[] = substr($text, $position, $closingMarkerPosition - $position);
+            $position = $closingMarkerPosition + $closingMarkerLength;
+        }
+    }
+    return $result;
+}
+ 
+
+/**
+ * Gets an automatic translation from automatic translators.
+ */
+function get_automatic_translation($sSource)
+{
+    $sTableHeader = "<table><tr><th>anglais</th><th>français</th><th>source</th></tr>";
+    $sSource = stripslashes(trim($sSource));
+    // Google translation
+    $hFile = fopen("http://translate.google.com/translate_t?langpair=en|fr&text=".urlencode($sSource), "r");
+    while (!feof($hFile)) $sContents .= fread($hFile, 8192);
+    fclose($hFile);
+    $aRegs = return_substring($sContents,"<textarea name=q rows=5 cols=45 wrap=PHYSICAL dir=ltr>","</textarea>");
+    $sGoogle = trim(mb_convert_encoding($aRegs[0],"UTF-8" ,"ISO-8859-1"));
+    if($sGoogle && ($sGoogle != $sSource))
+        $sOutput .= "<tr><td>".$sSource."</td><td>".$sGoogle."</td><td><a href=\"http://translate.google.com/translate_t\">Google</a></td></tr>";
+    $sContents=$aRegs="";
+
+    // Altavista babelfish 
+    $hFile = fopen("http://babelfish.altavista.com/tr?ienc=utf8&lp=en_fr&trtext=".urlencode($sSource), "r");
+    while (!feof($hFile)) $sContents .= fread($hFile, 8192);
+    fclose($hFile);
+    $aRegs = return_substring($sContents,"<input type=hidden name=\"q\" value=\"","\">");
+    $sAltavista = trim(mb_convert_encoding($aRegs[0],"UTF-8" ,"ISO-8859-1"));
+    if($sAltavista && ($sAltavista != $sSource))
+        $sOutput .= "<tr><td>".$sSource."</td><td>".$sAltavista."</td><td><a href=\"http://babelfish.altavista.com/tr\">Altavista</a></td></tr>";
+    $sContents=$aRegs="";
+
+    // Amikai
+    $hFile = fopen("http://standard.beta.amikai.com/amitext/indexUTF8.jsp?langpair=EN,FR&translate=T&sourceText=".urlencode($sSource), "r");
+    while (!feof($hFile)) $sContents .= fread($hFile, 8192);
+    fclose($hFile);
+    $aRegs = return_substring($sContents,"<textarea name=\"translatedText\" rows=\"2\" cols=\"54\" wrap=\"virtual\" style=\"background: #D8E6FC; color: #000;\">","</textarea>");
+    $sAmikai = trim($aRegs[0]);
+    if($sAmikai && ($sAmikai != $sSource))
+        $sOutput .= "<tr><td>".$sSource."</td><td>".$sAmikai."</td><td><a href=\"http://amikai.com/demo.jsp\">Amikai</a></td></tr>";
+
+    if($sOutput)
+    {
+        echo "<h3>Traduction automatique</h3>";
+        echo "<p><strong>Attention: les traductions automatiques ne doivent être prises que comme une simple indication.</strong></p>";
+        echo $sTableHeader;
+        echo $sOutput;
+        echo "</table>";
+    }
+
+}
 ?>
 
 <h2>Introduction</h2>
@@ -29,7 +103,7 @@ require("./includes/header.inc.php");
 
 <h2>Autres sources et références</h2>
 <ul>
- <li><p> Office de la langue française : <a href="http://www.culture.gouv.fr/culture/dglf/">France</a> - <a href="http://www.olf.gouv.qc.ca/">Canada</a> </p></li>
+ <li><p> Office de la langue française : <a href="http://www.culture.gouv.fr/culture/dglf/">France</a> - <a href="http://www.cfwb.be/franca/">Belgique</a> - <a href="http://www.olf.gouv.qc.ca/">Canada</a> - <a href="http://www.ciip.ch/ciip/DLF/">Suisse</a></p></li>
  <li><p> Dictionnaire français-anglais : <a href="http://www.granddictionnaire.com/_fs_global_01.htm">Grand dictionnaire terminologique</a> </p></li>
  <li><p> Français : <a href="http://atilf.atilf.fr/academie9.htm">Dictionnaire de l'Académie</a> - <a href="http://www.softissimo.com/grammaire/">Grammaire</a> - <a href="http://elsap1.unicaen.fr/cherches.html">Synonymes</a> </p></li>
  <li><p> Anglais : <a href="http://www.m-w.com/">Merriam &amp; Webster</a> </p></li>
@@ -65,7 +139,8 @@ if($_REQUEST['s'])
     $hResult = mysql_query($sQuery);
     if(!mysql_num_rows($hResult))
     {
-        echo "Aucune correspondance exacte trouvée.";       
+        echo "Aucune correspondance exacte trouvée.";
+        get_automatic_translation($_REQUEST['s']);
     } else 
     {
         echo $sTableHeader;
@@ -80,7 +155,6 @@ if($_REQUEST['s'])
         echo "</table>";
     }
 
-    echo "<h3>Correspondances approximatives (mots entiers seulement)</h3>";
     $sQuery = sprintf("SELECT * FROM glossary WHERE state!='deleted' AND source NOT LIKE 'mémo de %%' AND (en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s) ORDER BY en ASC",
                       smart_quote("% ".$_REQUEST['s']),
                       smart_quote($_REQUEST['s']." %"),
@@ -90,11 +164,9 @@ if($_REQUEST['s'])
                       smart_quote("%-".$_REQUEST['s']),
                       smart_quote($_REQUEST['s']));
     $hResult = mysql_query($sQuery);
-    if(!mysql_num_rows($hResult))
+    if(mysql_num_rows($hResult))
     {
-        echo "Aucune correspondance approximative trouvée.";
-    } else 
-    {
+        echo "<h3>Correspondances approximatives (mots entiers seulement)</h3>";
         echo $sTableHeader;
         while($oRow = mysql_fetch_object($hResult))
         {
@@ -107,8 +179,6 @@ if($_REQUEST['s'])
         echo "</table>";
     }
 
-    echo "<h3>Correspondances approximatives (mots entiers seulement) dans les glossaires utilisateurs</h3>";
-    echo "<p><strong>Attention: ces traductions ne sont pas officielles, à utiliser avec précaution.</strong></p>";
     $sQuery = sprintf("SELECT * FROM glossary WHERE state!='deleted' AND source LIKE 'mémo de %%' AND (en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s OR en LIKE %s) ORDER BY en ASC",
                       smart_quote("% ".$_REQUEST['s']),
                       smart_quote($_REQUEST['s']." %"),
@@ -118,11 +188,10 @@ if($_REQUEST['s'])
                       smart_quote("%-".$_REQUEST['s']),
                       smart_quote($_REQUEST['s']));
     $hResult = mysql_query($sQuery);
-    if(!mysql_num_rows($hResult))
+    if(mysql_num_rows($hResult))
     {
-        echo "Aucune correspondance approximative trouvée.";
-    } else 
-    {
+        echo "<h3>Correspondances approximatives (mots entiers seulement) dans les glossaires utilisateurs</h3>";
+        echo "<p><strong>Attention: ces traductions ne sont pas officielles, à utiliser avec précaution.</strong></p>";
         echo $sTableHeaderMemo;
         while($oRow = mysql_fetch_object($hResult))
         {
@@ -137,15 +206,12 @@ if($_REQUEST['s'])
         echo "</table>";
     }
 
-    echo "<h3>Correspondances approximatives (toutes)</h3>";
     $sQuery = sprintf("SELECT * FROM glossary WHERE state!='deleted' AND source NOT LIKE 'mémo de %%' AND en LIKE %s ORDER BY en ASC",
                       smart_quote("%".$_REQUEST['s']."%"));
     $hResult = mysql_query($sQuery);
-    if(!mysql_num_rows($hResult))
+    if(mysql_num_rows($hResult))
     {
-        echo "Aucune correspondance approximative trouvée dans les glossaires utilisateurs.";
-    } else 
-    {
+        echo "<h3>Correspondances approximatives (toutes)</h3>";
         echo $sTableHeader;
         while($oRow = mysql_fetch_object($hResult))
         {
