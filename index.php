@@ -140,7 +140,7 @@ if($_REQUEST['s'])
     if(!mysql_num_rows($hResult))
     {
         echo "Aucune correspondance exacte trouvée.";
-        get_automatic_translation($_REQUEST['s']);
+        //get_automatic_translation($_REQUEST['s']);
     } else 
     {
         echo $sTableHeader;
