@@ -4,8 +4,8 @@
 
 CREATE TABLE `glossary` (
   `id` int(11) NOT NULL auto_increment,
-  `en` varchar(255) NOT NULL,
-  `fr` varchar(255) NOT NULL,
+  `lng_source` varchar(255) NOT NULL,
+  `lng_target` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `source` varchar(25) NOT NULL,
   `state` enum('new','edited','deleted') NOT NULL default 'new',

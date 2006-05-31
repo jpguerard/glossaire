@@ -33,15 +33,15 @@ $hResult = mysql_query($sQuery);
 if($hResult) {
 
   if($_SESSION['admin'])
-      $sTableHeader = "<table><tr><th>anglais</th><th>français</th><th>commentaires</th><th>source</th><th>modifié le</th><th>modifié par</th><th>modification</th><th style=\"width:48px\">action</th></tr>";
+      $sTableHeader = "<table><tr><th>".$config['lng_source']."</th><th>".$config['lng_target']."</th><th>"._("comments")."</th><th>"._("source")."</th><th>modifié le</th><th>modifié par</th><th>modification</th><th style=\"width:48px\">"._("action")."</th></tr>";
   else
-      $sTableHeader = "<table><tr><th>anglais</th><th>français</th><th>commentaires</th><th>source</th><th>modifié le</th><th>modifié par</th><th>modification</th></tr>";
+      $sTableHeader = "<table><tr><th>".$config['lng_source']."</th><th>".$config['lng_target']."</th><th>"._("comments")."</th><th>"._("source")."</th><th>modifié le</th><th>modifié par</th><th>modification</th></tr>";
   echo $sTableHeader;
 
   while($oRow = mysql_fetch_object($hResult))
   {
     echo "<tr>\n";
-    echo "  <td>".$oRow->en."</td><td>".$oRow->fr."</td><td>".$oRow->comment."</td><td>".$oRow->source."</td><td>".$oRow->day."/".$oRow->month."/".$oRow->year."</td><td>".$oRow->user."</td><td>".$oRow->state."</td>";
+    echo "  <td>".$oRow->lng_source."</td><td>".$oRow->lng_target."</td><td>".$oRow->comment."</td><td>".prepare_source($oRow->source)."</td><td>".$oRow->day."/".$oRow->month."/".$oRow->year."</td><td>".$oRow->user."</td><td>".$oRow->state."</td>";
     if($_SESSION['admin'])
         if($oRow->state != 'deleted')
             echo "<td><a href=\"entry.php?id=".$oRow->id."\"><img src=\"./images/edit.png\" alt=\"[modifier]\" title=\"modifier l'entrée\" /></a>&nbsp;<a href=\"javascript:confirm_delete(".$oRow->id.");\"><img src=\"./images/delete.png\" alt=\"[supprimer]\" title=\"supprimer l'entrée\" /></a></td>";

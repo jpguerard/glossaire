@@ -21,24 +21,4 @@
 
 mysql_connect($config['db_host'], $config['db_username'], $config['db_password']);
 mysql_select_db($config['db_database']);
-
-
-// Quote variable to make it safe.
-function smart_quote($sValue)
-{
-   // No php/html tags allowed in database.
-   $sValue = strip_tags($sValue);
-
-   // Stripslashes.
-   if (get_magic_quotes_gpc())
-   {
-       $sValue = stripslashes($sValue);
-   }
-   // Quote if not a number or a numeric string.
-   if (!is_numeric($sValue))
-   {
-       $sValue = "'" . mysql_real_escape_string($sValue) . "'";
-   }
-   return $sValue;
-}
 ?>

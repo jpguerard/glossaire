@@ -24,23 +24,23 @@
   <div id="banner"><img src="http://www.gnomefr.org/img/spacer" alt="" /></div>
   <p class="none"></p>
   <div id="hdrNav">
-    <a href="http://wiki.traduc.org/Traduc.org">&Agrave; propos de Traduc.org</a> &middot;
-    <a href="http://www.traduc.org/mailman/listinfo/glossaire">Contact</a> &middot;
-    <a href="doc.php">Documentation</a> &middot;
+    <a href="http://wiki.traduc.org/Traduc.org"><?php echo _("About YOURPROJECTNAME");?></a> &middot;
+    <a href="http://www.traduc.org/mailman/listinfo/glossaire"><?php echo _("Contact");?></a> &middot;
+    <a href="doc.php"><?php echo _("Documentation");?></a> &middot;
 <?php
 if($_SESSION['admin'] || $_SESSION['user'])
-    echo "<a href=\"user.php\">".($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])."</a> (<a href=\"index.php?logout=1\">déconnexion</a>)";
+    echo "<a href=\"user.php\">".($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])."</a> (<a href=\"index.php?logout=1\">"._("logout")."</a>)";
 else 
-    echo "<a href=\"login.php\">Connexion</a>";
-echo " &middot; <i>~".$_SESSION['total']." entrées dans le <a href=\"index.php\">glossaire</a> (<a href=\"history.php\">historique</a>, <a href=\"export.php\">export</a>).</i>";?>
+    echo "<a href=\"login.php\">"._("Login")."</a>";
+echo " &middot; <i>~".$_SESSION['total']." "._("entries in the")." <a href=\"index.php\">"._("glossary")."</a> (<a href=\"history.php\">"._("history")."</a>, <a href=\"export.php\">"._("export")."</a>).</i>";?>
 
   </div>
 </div>
 </div>
 <div id="copyright">
 Copyright &copy; 2006, Jonathan Ernst<br />
-<a href="http://validator.w3.org/check/referer">Optimisé</a> pour les
-<a href="http://www.w3.org/">standards</a>.
+<a href="http://validator.w3.org/check/referer"><?php echo _("Designed");?></a> <?php echo _("for");?> 
+<a href="http://www.w3.org/"><?php echo _("standards");?></a>.
 </div>
 </body>
 </html>

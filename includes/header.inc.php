@@ -61,7 +61,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="./style/default.css" />
 <link rel="icon" type="image/png" href="http://wiki.traduc.org/wiki/icone.png" />
-<title>Glossaire informatique anglais-français</title>
+<title><?php echo _("French-english glossary");?></title>
 </head>
 
 <body>

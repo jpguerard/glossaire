@@ -4,8 +4,8 @@
 
 CREATE TABLE `glossary` (
   `id` int(11) NOT NULL auto_increment,
-  `en` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `fr` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `lng_source` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `lng_target` varchar(255) collate utf8_unicode_ci NOT NULL,
   `comment` text collate utf8_unicode_ci NOT NULL,
   `source` varchar(25) collate utf8_unicode_ci NOT NULL,
   `state` enum('new','edited','deleted') collate utf8_unicode_ci NOT NULL default 'new',

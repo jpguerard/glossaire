@@ -27,8 +27,8 @@ switch($_GET['f'])
     case "csv":
         header('Content-type: text/x-comma-separated-values');
         header('Content-Disposition: attachment; filename="export.'.$_GET['f'].'"');
-        echo '"en","fr","comment","source"'."\n";
-        $sQuery ="SELECT en,fr,comment,source FROM glossary WHERE state!='deleted' AND source NOT LIKE 'mémo de %' ORDER BY en ASC";
+        echo '"'.$config['lng_source'].'","'.$config['lng_target'].'","'._("comment").'","'._("source").'"'."\n";
+        $sQuery ="SELECT lng_source,lng_target,comment,source FROM glossary WHERE state!='deleted' AND source NOT LIKE '*%*' ORDER BY lng_source ASC";
         $hResult = mysql_query($sQuery);
         while($aRow = mysql_fetch_row($hResult))
         {
@@ -46,9 +46,9 @@ switch($_GET['f'])
     case "xml":
         header('Content-type: text/xml');
         header('Content-Disposition: attachment; filename="export.'.$_GET['f'].'"');
-        $aTags = array("en","fr","comment","source");
+        $aTags = array($config['lng_source'],$config['lng_target'],_("comment"),_("source"));
         echo "<glossary>\n";
-        $sQuery ="SELECT en,fr,comment,source FROM glossary WHERE state!='deleted' AND source NOT LIKE 'mémo de %' ORDER BY en ASC";
+        $sQuery ="SELECT lng_source,lng_target,comment,source FROM glossary WHERE state!='deleted' AND source NOT LIKE '*%*' ORDER BY lng_source ASC";
         $hResult = mysql_query($sQuery);
         while($aRow = mysql_fetch_row($hResult))
         {
