@@ -32,7 +32,7 @@ if($_POST['action'] == "new")
 {
     $sQuery = sprintf("INSERT INTO glossary (lng_source,lng_target,comment,source,date,user) VALUES (%s,%s,%s,%s,NOW(),%s)",
                        smart_quote($_POST['lng_source']),
-                       smart_quote($_POST['fr']),
+                       smart_quote($_POST['lng_target']),
                        smart_quote($_POST['comment']),
                        smart_quote(($_SESSION['admin']?$_POST['source']:"mémo de ".$_SESSION['user'])),
                        smart_quote(($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])));
@@ -45,7 +45,7 @@ if($_POST['action'] == "new")
     // Admins can update any record.
     if($_SESSION['admin'])
         $sQuery = sprintf("UPDATE glossary SET lng_target=%s, comment=%s, source=%s, date=NOW(), state='edited', user=%s WHERE id=%s LIMIT 1",
-                          smart_quote($_POST['fr']),
+                          smart_quote($_POST['lng_target']),
                           smart_quote($_POST['comment']),
                           smart_quote($_POST['source']),
                           smart_quote($_SESSION['admin']),
@@ -53,7 +53,7 @@ if($_POST['action'] == "new")
     // Users can only admin their own records (checked using source).
     else
         $sQuery = sprintf("UPDATE glossary SET lng_target=%s, comment=%s, date=NOW(), state='edited' WHERE id=%s AND source=%s LIMIT 1",
-                          smart_quote($_POST['fr']),
+                          smart_quote($_POST['lng_target']),
                           smart_quote($_POST['comment']),
                           smart_quote($_POST['id']),
                           smart_quote("*".$_SESSION['user']."*"));
