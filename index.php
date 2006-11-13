@@ -32,7 +32,8 @@ echo "
 Le glossaire inter-projet a été en commun par l'association <a 
 href=\"http://www.traduc.org\">Traduc.org</a>,
 
-l'<a href=\"http://fr.openoffice.org>Équipe francophone d'OpenOffice.org</a>,
+l'<a href=\"http://fr.openoffice.org\">Équipe francophone 
+d'OpenOffice.org</a>,
 
 le <a href=\"http://gnomefr.traduc.org/\">Groupe de travail de 
 traduction de GNOME en Français</a> et
