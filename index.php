@@ -38,7 +38,7 @@ d'OpenOffice.org</a>,
 le <a href=\"http://gnomefr.traduc.org/\">Groupe de travail de 
 traduction de GNOME en Français</a> et
 
-le projet </a href=\"http://fr.l10n.kde.org/\">KDE en français</a>.
+le projet <a href=\"http://fr.l10n.kde.org/\">KDE en français</a>.
 
 </p>
 
