@@ -27,6 +27,29 @@ echo "
 <h2>"._("Introduction")."</h2>
 <p>"._("Using the glossary allows for an homogenuous translation. Please be careful to take the context into account and to don't apply translations automatically.")."</p>
 
+<p>
+
+Le glossaire inter-projet a été en commun par l'association <a 
+href=\"http://www.traduc.org\">Traduc.org</a>,
+
+l'<a href=\"http://fr.openoffice.org>Équipe francophone d'OpenOffice.org</a>,
+
+le <a href=\"http://gnomefr.traduc.org/\">Groupe de travail de 
+traduction de GNOME en Français</a> et
+
+le projet </a href=\"http://fr.l10n.kde.org/\">KDE en français</a>.
+
+</p>
+
+<p>
+
+L'évolution de ce glossaire, ainsi que son contenu sont discutés sur la 
+liste <a 
+href="http://www.traduc.org/mailman/listinfo/glossaire">glossaire CHEZ 
+traduc POINT org</a>.
+
+</p>
+
 <h2>"._("Other sources and references")."</h2>
 <ul>
 "._("<!-- Some locale related links -->
