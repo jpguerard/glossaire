@@ -25,7 +25,6 @@ require("./includes/header.inc.php");
 
 echo "
 <h2>"._("Introduction")."</h2>
-<p>"._("Using the glossary allows for an homogenuous translation. Please be careful to take the context into account and to don't apply translations automatically.")."</p>
 
 <p>
 
@@ -50,6 +49,8 @@ href=\"http://www.traduc.org/mailman/listinfo/glossaire\">glossaire CHEZ
 traduc POINT org</a>.
 
 </p>
+
+<p>"._("Using the glossary allows for an homogenuous translation. Please be careful to take the context into account and to don't apply translations automatically.")."</p>
 
 <h2>"._("Other sources and references")."</h2>
 <ul>
