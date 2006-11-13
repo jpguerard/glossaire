@@ -46,7 +46,7 @@ le projet <a href=\"http://fr.l10n.kde.org/\">KDE en français</a>.
 
 L'évolution de ce glossaire, ainsi que son contenu sont discutés sur la 
 liste <a 
-href="http://www.traduc.org/mailman/listinfo/glossaire">glossaire CHEZ 
+href=\"http://www.traduc.org/mailman/listinfo/glossaire\">glossaire CHEZ 
 traduc POINT org</a>.
 
 </p>
