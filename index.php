@@ -28,7 +28,7 @@ echo "
 
 <p>
 
-Le glossaire inter-projet a été en commun par l'association <a 
+Le glossaire inter-projet a été créé en commun par l'association <a 
 href=\"http://www.traduc.org\">Traduc.org</a>,
 
 l'<a href=\"http://fr.openoffice.org\">Équipe francophone 
