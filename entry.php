@@ -34,7 +34,7 @@ if($_POST['action'] == "new")
                        smart_quote($_POST['lng_source']),
                        smart_quote($_POST['lng_target']),
                        smart_quote($_POST['comment']),
-                       smart_quote(($_SESSION['admin']?$_POST['source']:"mémo de ".$_SESSION['user'])),
+                       smart_quote(($_SESSION['admin']?$_POST['source']:"*".$_SESSION['user']."*")),
                        smart_quote(($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])));
     mysql_query($sQuery);
     header("Location: index.php?s=".$_POST['lng_source']);
