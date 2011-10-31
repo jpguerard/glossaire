@@ -23,8 +23,7 @@ require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
 require("./includes/header.inc.php");
 
-echo "<h2>"._("Glossary")."</h2>
-<!-- <p>"._("Attention: toute modification doit être discutée sur la <a href=\"http://www.traduc.org/mailman/listinfo/glossaire\">liste de diffusion</a>")."</p>-->
+echo "<h1>"._("Glossary")."</h1>
 <form name=\"f\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">
 <div><input name=\"s\" type=\"text\" value=\"".stripslashes($_REQUEST['s'])."\" /><input type=\"submit\" value=\""._("search")."\" /></div>
 </form>";
