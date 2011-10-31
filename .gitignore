@@ -1,0 +1,4 @@
+includes/config.inc.php
+*~
+*.bak
+*.mo
