@@ -23,48 +23,9 @@ require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
 require("./includes/header.inc.php");
 
-echo "
-<h2>"._("Introduction")."</h2>
-
-<p>
-
-Le glossaire inter-projet a été créé en commun par l'association <a 
-href=\"http://www.traduc.org\">Traduc.org</a>,
-
-l'<a href=\"http://fr.openoffice.org\">Équipe francophone 
-d'OpenOffice.org</a>,
-
-le <a href=\"http://gnomefr.traduc.org/\">Groupe de travail de 
-traduction de GNOME en Français</a> et
-
-le projet <a href=\"http://fr.l10n.kde.org/\">KDE en français</a>.
-
-</p>
-
-<p>
-
-L'évolution de ce glossaire, ainsi que son contenu sont discutés sur la 
-liste <a 
-href=\"http://www.traduc.org/mailman/listinfo/glossaire\">glossaire CHEZ 
-traduc POINT org</a>.
-
-</p>
-
-<p>"._("Using the glossary allows for an homogenuous translation. Please be careful to take the context into account and to don't apply translations automatically.")."</p>
-
-<h2>"._("Other sources and references")."</h2>
-<ul>
-"._("<!-- Some locale related links -->
- <li><p> Office de la langue française : <a href=\"http://www.culture.gouv.fr/culture/dglf/\">France</a> - <a href=\"http://www.cfwb.be/franca/\">Belgique</a> - <a href=\"http://www.olf.gouv.qc.ca/\">Québec</a> - <a href=\"http://www.ciip.ch/ciip/DLF/\">Suisse</a></p></li>
- <li><p> Dictionnaire français-anglais : <a href=\"http://www.granddictionnaire.com/_fs_global_01.htm\">Grand dictionnaire terminologique</a> </p></li>
- <li><p> Français : <a href=\"http://atilf.atilf.fr/academie9.htm\">Dictionnaire de l'Académie</a> - <a href=\"http://www.softissimo.com/grammaire/\">Grammaire</a> - <a href=\"http://elsap1.unicaen.fr/cherches.html\">Synonymes</a></p></li>
- <li><p> Anglais : <a href=\"http://www.m-w.com/\">Merriam &amp; Webster</a> </p></li>
- <li><p> Glossaires informatique et Internet : <a href=\"http://www.linux-france.org/prj/jargonf/\">Jargon</a> - <a href=\"http://www-rocq.inria.fr/qui/Philippe.Deschamp/RETIF/\">RETIF</a> - <a href=\"http://www.culture.fr/culture/dglf/cogeter/16-03-99-internet-termetrang.html\">Ministère de la culture</a> - <a href=\"http://wwli.com/translation/netglos/\">NetGlos</a>.</p></li>")."
-</ul>
-
-<h2>"._("Glossary")."</h2>
-<p><strong>"._("Attention: toute modification doit être discutée sur la <a href=\"http://www.traduc.org/mailman/listinfo/glossaire\">liste de diffusion</a>")."</strong></p>
-<form method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">
+echo "<h2>"._("Glossary")."</h2>
+<!-- <p>"._("Attention: toute modification doit être discutée sur la <a href=\"http://www.traduc.org/mailman/listinfo/glossaire\">liste de diffusion</a>")."</p>-->
+<form name=\"f\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">
 <div><input name=\"s\" type=\"text\" value=\"".stripslashes($_REQUEST['s'])."\" /><input type=\"submit\" value=\""._("search")."\" /></div>
 </form>";
 
@@ -195,5 +156,18 @@ if($bAuto)
     flush();
     get_automatic_translation($_REQUEST['s']);
 }
+
+
+echo "
+<h2>"._("Other sources and references")."</h2>
+<ul>
+"._("<!-- Some locale related links -->
+ <li><p> Office de la langue française : <a href=\"http://www.culture.gouv.fr/culture/dglf/\">France</a> - <a href=\"http://www.cfwb.be/franca/\">Belgique</a> - <a href=\"http://www.olf.gouv.qc.ca/\">Québec</a> - <a href=\"http://www.ciip.ch/ciip/DLF/\">Suisse</a></p></li>
+ <li><p> Dictionnaire français-anglais : <a href=\"http://www.granddictionnaire.com/_fs_global_01.htm\">Grand dictionnaire terminologique</a> </p></li>
+ <li><p> Français : <a href=\"http://atilf.atilf.fr/academie9.htm\">Dictionnaire de l'Académie</a> - <a href=\"http://www.softissimo.com/grammaire/\">Grammaire</a> - <a href=\"http://elsap1.unicaen.fr/cherches.html\">Synonymes</a></p></li>
+ <li><p> Anglais : <a href=\"http://www.m-w.com/\">Merriam &amp; Webster</a> </p></li>
+ <li><p> Glossaires informatique et Internet : <a href=\"http://www.linux-france.org/prj/jargonf/\">Jargon</a> - <a href=\"http://www-rocq.inria.fr/qui/Philippe.Deschamp/RETIF/\">RETIF</a> - <a href=\"http://www.culture.fr/culture/dglf/cogeter/16-03-99-internet-termetrang.html\">Ministère de la culture</a> - <a href=\"http://wwli.com/translation/netglos/\">NetGlos</a>.</p></li>")."
+</ul>";
+
 require("./includes/footer.inc.php");
 ?>

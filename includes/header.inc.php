@@ -60,9 +60,26 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="./style/default.css" />
-<link rel="icon" type="image/png" href="http://wiki.traduc.org/wiki/icone.png" />
+<link rel="icon" type="image/png" href="http://wiki.traduc.org/moin_static/icone.png" />
+<script>
+function addEngine()
+{
+  if ((typeof window.sidebar == "object") && (typeof window.sidebar.addSearchEngine == "function"))
+  {
+    window.sidebar.addSearchEngine(
+      "http://glossaire.traduc.org/glossaire.src",  /* engine URL */
+      "http://glossaire.traduc.org/glossaire.png",  /* icon URL */
+      "glossaire.traduc.org",                       /* engine name */
+      "Web" );                                      /* category name */
+  }
+  else
+  {
+    alert("Mozilla M15 or later is required to add a search engine.");
+  }
+}
+</script>
 <title><?php echo _("French-english glossary");?></title>
 </head>
 
-<body>
+<body onload="document.f.s.focus();" >
 <div id="body">

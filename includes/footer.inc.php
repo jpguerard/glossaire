@@ -20,20 +20,22 @@
  */
 ?>
 <div id="hdr">
-  <div id="logo"><a href="http://glossaire.traduc.org/"><img src="http://www.gnomefr.org/img/spacer" alt="" /></a></div>
+  <div id="logo"><a href="http://traduc.org/"><img src="http://www.gnomefr.org/img/spacer" alt="" /></a></div>
   <div id="banner"><img src="http://www.gnomefr.org/img/spacer" alt="" /></div>
   <p class="none"></p>
   <div id="hdrNav">
-    <a href="http://wiki.traduc.org/Traduc.org"><?php echo _("About YOURPROJECTNAME");?></a> &middot;
-    <a href="http://www.traduc.org/mailman/listinfo/glossaire"><?php echo _("Contact");?></a> &middot;
+    <strong><a href="/"><?php echo _("Glossary:");?></a></strong>
     <a href="doc.php"><?php echo _("Documentation");?></a> &middot;
+    <a href="http://www.traduc.org/mailman/listinfo/glossaire"><?php echo _("Contact");?></a> &middot;
 <?php
 if($_SESSION['admin'] || $_SESSION['user'])
-    echo "<a href=\"user.php\">".($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])."</a> (<a href=\"index.php?logout=1\">"._("logout")."</a>)";
+    echo "<strong><a href=\"user.php\">".($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])."</a> (<a href=\"index.php?logout=1\">"._("logout")."</a>)</strong>";
 else 
-    echo "<a href=\"login.php\">"._("Login")."</a>";
-echo " &middot; <i>~".$_SESSION['total']." "._("entries in the")." <a href=\"index.php\">"._("glossary")."</a> (<a href=\"history.php\">"._("history")."</a>, <a href=\"export.php\">"._("export")."</a>).</i>";?>
+    echo "<strong><a href=\"login.php\">"._("Login")."</a></strong> &middot;";
+?>
 
+<a href="history.php"><?php echo _("History");?></a> &middot;
+<a href="export.php"><?php echo _("Export");?></a>
   </div>
 </div>
 </div>

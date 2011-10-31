@@ -3,7 +3,7 @@
  * Documentation page for the Glossary.
  *
  * Copyright (C) 2006 Jonathan Ernst
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
@@ -25,8 +25,13 @@ require("./includes/header.inc.php");
 ?>
 
 <h2>Introduction</h2>
+
+<p>
 Ce glossaire a été créé dans le but de faciliter et d'uniformiser la traduction de logiciels et de documentation informatique.
 Cette page sert de documentation pour l'utilisation du système.
+</p>
+
+<p>L'utilisation du glossaire permet d'avoir une traduction homogène. Faites cependant attention à bien prendre en compte le contexte de la traduction et à ne pas appliquer bêtement les traductions indiquées dans ce document.</p>
 
 <h2>Utilisateurs</h2>
 Les utilisateurs du glossaire sont divisés en trois catégories décrites ci-après.
@@ -46,6 +51,28 @@ Le glossaire officiel peut être <a href="export.php">exporté</a> dans divers f
 
 <h2>Importation</h2>
 Des glossaires pourront être importés dans le glossaire officiel par les administrateurs. Les formats supportés sont notamment CSV, XML, etc.
+
+<h2>Recherche dans Firefox</h2>
+
+Vous pouvez ajouter le glossaire comme moteur de recherche dans Firefox : <a href="#" onclick="addEngine();">ajouter à Firefox</a>.
+
+
+<h2>Organisation</h2>
+
+<p>
+
+Le glossaire inter-projet a été créé en commun par l'association <a href="http://www.traduc.org">Traduc.org</a>, l'<a href="http://fr.openoffice.org">Équipe francophone 
+d'OpenOffice.org</a>, le <a href="http://gnomefr.traduc.org/">Groupe de travail de traduction de GNOME en Français</a> et le projet <a href="http://fr.l10n.kde.org/">KDE en français</a>.
+
+</p>
+
+<p>
+
+L'évolution de ce glossaire, ainsi que son contenu sont discutés sur la liste <a 
+href="http://www.traduc.org/mailman/listinfo/glossaire">glossaire CHEZ 
+traduc POINT org</a>.
+
+</p>
 
 <?php
 require("./includes/footer.inc.php");

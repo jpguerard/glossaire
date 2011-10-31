@@ -47,6 +47,9 @@ msgstr ""
 msgid "Glossary"
 msgstr "Glossaire"
 
+msgid "Glossary:"
+msgstr "Glossaire :"
+
 #: index.php:41
 msgid "Attention: toute modification doit être discutée sur la <a href=\"http://www.traduc.org/mailman/listinfo/glossaire\">liste de diffusion</a>"
 msgstr "Attention: toute modification doit être discutée sur la <a href=\"http://www.traduc.org/mailman/listinfo/glossaire\">liste de diffusion</a>"
@@ -158,12 +161,12 @@ msgid "glossary"
 msgstr "glossaire"
 
 #: includes/footer.inc.php:35
-msgid "history"
-msgstr "historique"
+msgid "History"
+msgstr "Historique"
 
 #: includes/footer.inc.php:35
-msgid "export"
-msgstr "exporter"
+msgid "Export"
+msgstr "Exporter"
 
 #: includes/footer.inc.php:42
 msgid "Designed"
