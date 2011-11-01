@@ -31,7 +31,7 @@ echo "<h1>"._("Glossary")."</h1>\n"
                 ."value=\"".stripslashes($_REQUEST['s'])."\" "
        ."/>"
        ."<input type=\"submit\" value=\""._("search")."\" />"
-     ."</div>\n".
+     ."</div>\n"
      ."</form>";
 
 // We did search for something...

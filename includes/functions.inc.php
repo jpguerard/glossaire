@@ -92,7 +92,7 @@ function get_automatic_translation($sSource) {
     $hFile = fopen("http://translate.google.com/translate_t?langpair="
                    .$config['at_google']."&text=".urlencode($sSource), "r");
 
-    while ( ! feof($hFile) ) { $sContents .= fread($hFile, 8192) };
+    while ( ! feof($hFile) ) $sContents .= fread($hFile, 8192);
 
     fclose($hFile);
 
@@ -119,7 +119,7 @@ function get_automatic_translation($sSource) {
     $hFile = fopen("http://babelfish.altavista.com/tr?ienc=utf8&lp="
                    .$config['at_altavista']."&trtext="
                    .urlencode($sSource), "r");
-    while ( !feof($hFile) ) { $sContents .= fread($hFile, 8192); }
+    while ( !feof($hFile) ) $sContents .= fread($hFile, 8192);
 
     fclose($hFile);
 
@@ -144,7 +144,7 @@ function get_automatic_translation($sSource) {
                    ."indexUTF8.jsp?langpair=".$config['at_amikai']
                    ."&translate=T&sourceText=".urlencode($sSource), "r");
 
-    while ( !feof($hFile) ) { $sContents .= fread($hFile, 8192); }
+    while ( !feof($hFile) ) $sContents .= fread($hFile, 8192);
 
     fclose($hFile);
 
