@@ -255,7 +255,7 @@ echo "
 "._("<!-- Some locale related links -->
  <li><p> Office de la langue française : "
   ."<a href=\"http://www.culture.gouv.fr/culture/dglf/\">France</a> "
-  ."- <a href=\"http://www.cfwb.be/franca/\">Belgique</a> "
+  ."- <a href=\"http://www.languefrancaise.cfwb.be/\">Belgique</a> "
   ."- <a href=\"http://www.olf.gouv.qc.ca/\">Québec</a> "
   ."- <a href=\"http://www.ciip.ch/ciip/DLF/\">Suisse</a></p></li>
  <li><p> Dictionnaire français-anglais : "
