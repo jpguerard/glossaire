@@ -17,24 +17,31 @@
 
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA  02110-1301  USA.
+ *
  */
 
 require("./includes/config.inc.php");
-if($_SESSION['admin'] || $_SESSION['user'])
-    header("Location: index.php");
+
+if ( $_SESSION['admin'] || $_SESSION['user'] ) {
+  header("Location: index.php");
+}
+
 require("./includes/mysql.inc.php");
 require("./includes/header.inc.php");
+
 ?>
 
 <h2>Connexion</h2>
-<p><strong>Si vous souhaitez obtenir un compte, <a href="user.php">inscrivez-vous</a>.</strong></p>
+<p><strong>Si vous souhaitez obtenir un compte,
+   <a href="user.php">inscrivez-vous</a>.</strong></p>
 <form method="post" action="index.php">
-  <label for="username">Nom d'utilisateur : </label><input id="username" name="username" type="text" /><br />
-  <label for="password">Mot de passe : </label><input id="password" name="password" type="password" /><br />
+  <label for="username">Nom d'utilisateur :
+    </label><input id="username" name="username" type="text" /><br />
+  <label for="password">Mot de passe :
+    </label><input id="password" name="password" type="password" /><br />
   <input type="submit" value="se connecter">
 </form>
 
-<?php
-require("./includes/footer.inc.php");
-?>
+<?php require("./includes/footer.inc.php"); ?>

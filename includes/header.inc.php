@@ -17,54 +17,73 @@
 
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA  02110-1301  USA.
+ *
  */
 
 // We tried to log in.
-if(!$_SESSION['admin'] && $_POST['username'] && $_POST['password'] && !$_POST['action'])
-{
-    $sQuery = sprintf("SELECT username,admin FROM users WHERE username=%s AND password=MD5(%s) LIMIT 1",
+if ( !$_SESSION['admin']
+     && $_POST['username']
+     && $_POST['password']
+     && !$_POST['action'] ) {
+
+  $sQuery = sprintf("SELECT username,admin FROM users WHERE username=%s "
+                    ."AND password=MD5(%s) LIMIT 1",
                       smart_quote($_POST['username']),
                       smart_quote($_POST['password']));
-    $hResult = mysql_query($sQuery);
-    $oRow = mysql_fetch_object($hResult);
-    if($oRow->username && $oRow->admin=="true")
-        $_SESSION['admin'] = $_POST['username'];
-    elseif($oRow->username)
-        $_SESSION['user'] = $_POST['username'];
-    else {
-        define_syslog_variables();
-        syslog(LOG_NOTICE, "Echec de connexion de ".$_POST['username']." au glossaire");
-    }
-} elseif($_GET['logout'])
-{
+  $hResult = mysql_query($sQuery);
+  $oRow = mysql_fetch_object($hResult);
+
+  if($oRow->username && $oRow->admin=="true") {
+
+    $_SESSION['admin'] = $_POST['username'];
+
+  } elseif($oRow->username) {
+
+    $_SESSION['user'] = $_POST['username'];
+
+  } else {
+
+    define_syslog_variables();
+    syslog(LOG_NOTICE, "Echec de connexion de "
+                       .$_POST['username']." au glossaire");
+
+  }
+} elseif($_GET['logout']) {
+
     $_SESSION['admin'] = "";   
     $_SESSION['user'] = ""; 
+
 }
 
-// $_SESSION['total'] is used to show the total number of records in the database.
+// $_SESSION['total'] is used to show the total number of records in
+// the database.
 // Let's compute it only if it hasn't been computed in this session.
-if(!$_SESSION['total'])
-{
+if(!$_SESSION['total']) {
+
     $sQuery = "SELECT count(1) as total FROM glossary";
     $hResult = mysql_query($sQuery);
     $oRow = mysql_fetch_object($hResult);
     $_SESSION['total'] = $oRow->total;
+
 }
 
 header("Content-Type: text/html; charset=utf-8");
 echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="./style/default.css" />
-<link rel="icon" type="image/png" href="http://wiki.traduc.org/moin_static/icone.png" />
+<link rel="icon" type="image/png"
+      href="http://wiki.traduc.org/moin_static/icone.png" />
+
 <script>
-function addEngine()
-{
+function addEngine() {
   if ((typeof window.sidebar == "object") && (typeof window.sidebar.addSearchEngine == "function"))
   {
     window.sidebar.addSearchEngine(
