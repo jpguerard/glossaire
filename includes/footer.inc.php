@@ -31,9 +31,8 @@
 if($_SESSION['admin'] || $_SESSION['user'])
     echo "<strong><a href=\"user.php\">".($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])."</a> (<a href=\"index.php?logout=1\">"._("logout")."</a>)</strong>";
 else 
-    echo "<strong><a href=\"login.php\">"._("Login")."</a></strong> &middot;";
-?>
-
+    echo "<strong><a href=\"login.php\">"._("Login")."</a></strong>";
+?> &middot;
 <a href="history.php"><?php echo _("History");?></a> &middot;
 <a href="export.php"><?php echo _("Export");?></a>
   </div>
