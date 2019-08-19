@@ -89,7 +89,7 @@ function get_automatic_translation($sSource) {
   // Google translation
   if($config['at_google']) {
 
-    $hFile = fopen("http://translate.google.com/translate_t?langpair="
+    $hFile = fopen("https://translate.google.com/translate_t?langpair="
                    .$config['at_google']."&text=".urlencode($sSource), "r");
 
     while ( ! feof($hFile) ) $sContents .= fread($hFile, 8192);
@@ -106,7 +106,7 @@ function get_automatic_translation($sSource) {
     if($sGoogle) {
 
       $sOutput .= "<tr><td>".$sSource."</td><td>".$sGoogle."</td>"
-                  ."<td><a href=\"http://translate.google.com/"
+                  ."<td><a href=\"https://translate.google.com/"
                   ."translate_t\">Google</a></td></tr>";
 
     }

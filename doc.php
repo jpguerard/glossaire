@@ -51,7 +51,7 @@ c'est-à-dire effectuer des recherches et exporter des données.
 Afin d'accéder à plus de fonctions, il est nécessaire que le visiteur
 s'enregistre et se connecte au glossaire ou demande son inscription
 en tant qu'administrateur sur la
-<a href="http://www.traduc.org/mailman/listinfo/glossaire">liste
+<a href="https://www.traduc.org/mailman/listinfo/glossaire">liste
 de diffusion</a>.</p>
 
 <h3>Utilisateurs enregistrés</h3>
@@ -65,7 +65,7 @@ pas partie intégrante du glossaire officiel.</p>
 
 <p>Les administrateurs sont désignés par d'autres administrateurs après
 une demande motivée sur la
-<a href="http://www.traduc.org/mailman/listinfo/glossaire">liste de
+<a href="https://www.traduc.org/mailman/listinfo/glossaire">liste de
 diffusion</a>. Ils ont la capacité de modifier les glossaires officiels
 et personnels et de supprimer ou modifier les utilisateurs enregistrés
 et les administrateurs.</p>
@@ -90,15 +90,15 @@ Firefox</a>.</p>
 <h2>Organisation</h2>
 
 <p>Le glossaire inter-projet a été créé en commun par l'association
-<a href="http://www.traduc.org">Traduc.org</a>,
-l'<a href="http://fr.openoffice.org">Équipe francophone
-d'OpenOffice.org</a>, le <a href="http://gnomefr.traduc.org/">Groupe de
+<a href="https://www.traduc.org">Traduc.org</a>,
+l'<a href="https://www.openoffice.org/fr/">Équipe francophone
+d'OpenOffice.org</a>, le <a href="https://gnomefr.traduc.org/">Groupe de
 travail de traduction de GNOME en Français</a> et le projet
-<a href="http://fr.l10n.kde.org/">KDE en français</a>.</p>
+<a href="https://fr.l10n.kde.org/">KDE en français</a>.</p>
 
 <p>L'évolution de ce glossaire, ainsi que son contenu sont discutés
 sur la liste
-<a href="http://www.traduc.org/mailman/listinfo/glossaire">glossaire CHEZ
+<a href="https://www.traduc.org/mailman/listinfo/glossaire">glossaire CHEZ
 traduc POINT org</a>.</p>
 
 <h2>Sources</h2>

@@ -80,15 +80,15 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="./style/default.css" />
 <link rel="icon" type="image/png"
-      href="http://wiki.traduc.org/moin_static/icone.png" />
+      href="https://wiki.traduc.org/moin_static/icone.png" />
 
 <script>
 function addEngine() {
   if ((typeof window.sidebar == "object") && (typeof window.sidebar.addSearchEngine == "function"))
   {
     window.sidebar.addSearchEngine(
-      "http://glossaire.traduc.org/glossaire.src",  /* engine URL */
-      "http://glossaire.traduc.org/glossaire.png",  /* icon URL */
+      "https://glossaire.traduc.org/glossaire.src",  /* engine URL */
+      "https://glossaire.traduc.org/glossaire.png",  /* icon URL */
       "glossaire.traduc.org",                       /* engine name */
       "Web" );                                      /* category name */
   }
