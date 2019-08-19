@@ -45,7 +45,6 @@ if ( !$_SESSION['admin']
 
   } else {
 
-    define_syslog_variables();
     syslog(LOG_NOTICE, "Echec de connexion de "
                        .$_POST['username']." au glossaire");
 
