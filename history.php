@@ -34,7 +34,7 @@ require("./includes/header.inc.php");
 
 $sQuery ="SELECT *, DAYOFMONTH(date) as day, MONTH(date) as month, "
          ." YEAR(date) as year FROM glossary ORDER BY date DESC LIMIT 100";
-$hResult = mysql_query($sQuery);
+$hResult = mysqli_query($mysqllink, $sQuery);
 
 if($hResult) {
 
@@ -57,7 +57,7 @@ if($hResult) {
 
   echo $sTableHeader;
 
-  while($oRow = mysql_fetch_object($hResult)) {
+  while($oRow = mysqli_fetch_object($hResult)) {
 
     echo "<tr>\n";
     echo "  <td>".$oRow->lng_source."</td><td>".$oRow->lng_target

@@ -32,8 +32,8 @@ if ( !$_SESSION['admin']
                     ."AND password=MD5(%s) LIMIT 1",
                       smart_quote($_POST['username']),
                       smart_quote($_POST['password']));
-  $hResult = mysql_query($sQuery);
-  $oRow = mysql_fetch_object($hResult);
+  $hResult = mysqli_query($mysqllink, $sQuery);
+  $oRow = mysqli_fetch_object($hResult);
 
   if($oRow->username && $oRow->admin=="true") {
 
@@ -63,8 +63,8 @@ if ( !$_SESSION['admin']
 if(!$_SESSION['total']) {
 
     $sQuery = "SELECT count(1) as total FROM glossary";
-    $hResult = mysql_query($sQuery);
-    $oRow = mysql_fetch_object($hResult);
+    $hResult = mysqli_query($mysqllink, $sQuery);
+    $oRow = mysqli_fetch_object($hResult);
     $_SESSION['total'] = $oRow->total;
 
 }

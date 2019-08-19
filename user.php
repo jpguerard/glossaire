@@ -33,9 +33,9 @@ if($_POST['action'] == "new" && !$_SESSION['user']) {
               smart_quote($_POST['username']),
               smart_quote($_POST['password']),
               smart_quote(($_SESSION['admin']?'true':'false')));
-  mysql_query($sQuery);
+  mysqli_query($mysqllink, $sQuery);
 
-  if( mysql_affected_rows() ) {
+  if( mysqli_affected_rows($mysqllink) ) {
 
     $sMessage = "<p><strong>Nouvel "
                 .($_SESSION['admin']?'administrateur':'utilisateur')
@@ -71,9 +71,9 @@ if($_POST['action'] == "new" && !$_SESSION['user']) {
                 smart_quote($_POST['username']));
   }
 
-  mysql_query($sQuery);
+  mysqli_query($mysqllink, $sQuery);
 
-  if(mysql_affected_rows()) {
+  if(mysqli_affected_rows($mysqllink)) {
 
     $sMessage = "<p><strong>Mot de passe de l'utilisateur "
                 .$_POST['username']." changé.</strong></p>";
@@ -91,9 +91,9 @@ if($_POST['action'] == "new" && !$_SESSION['user']) {
 
   $sQuery = sprintf("DELETE FROM users WHERE username=%s LIMIT 1",
               smart_quote($_POST['username']));
-  mysql_query($sQuery);
+  mysqli_query($mysqllink, $sQuery);
 
-  if(mysql_affected_rows()) {
+  if(mysqli_affected_rows($mysqllink)) {
     $sMessage = "<p><strong>Utilisateur ".$_POST['username']." supprimé.</strong></p>";
   } else {
     $sMessage = "<p><strong>Impossible de supprimer l'utilisateur. "
@@ -169,3 +169,4 @@ if($_SESSION['admin']) { ?>
 
 <?php }
 require("./includes/footer.inc.php"); ?>
+

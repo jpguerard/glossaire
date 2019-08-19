@@ -22,9 +22,7 @@
  *
  */
 
-mysql_connect($config['db_host'], $config['db_username'],
-              $config['db_password']);
-
-mysql_select_db($config['db_database']);
+$mysqllink = mysqli_connect($config['db_host'], $config['db_username'],
+              $config['db_password'], $config['db_database']);
 
 ?>

@@ -71,10 +71,10 @@ if($_REQUEST['s']) {
   $sQuery = sprintf("SELECT * FROM glossary WHERE state!='deleted' "
             ."AND source NOT LIKE '*%%*' AND lng_source LIKE %s "
             ."ORDER BY lng_source ASC",
-              smart_quote($_REQUEST['s']));
-  $hResult = mysql_query($sQuery);
+            smart_quote($_REQUEST['s']) );
+  $hResult = mysqli_query($mysqllink, $sQuery);
 
-  if(!mysql_num_rows($hResult)) {
+  if(!mysqli_num_rows($hResult)) {
 
     echo _("No perfect match found.");
     $bAuto = true;
@@ -82,7 +82,7 @@ if($_REQUEST['s']) {
   } else {
 
     echo $sTableHeader;
-    while($oRow = mysql_fetch_object($hResult)) {
+    while($oRow = mysqli_fetch_object($hResult)) {
 
       echo "<tr>\n";
       echo "  <td>".$oRow->lng_source."</td><td>".$oRow->lng_target."</td>"
@@ -115,14 +115,14 @@ if($_REQUEST['s']) {
               smart_quote($_REQUEST['s']."-%"),
               smart_quote("%-".$_REQUEST['s']),
               smart_quote($_REQUEST['s']));
-  $hResult = mysql_query($sQuery);
+  $hResult = mysqli_query($mysqllink, $sQuery);
 
-  if(mysql_num_rows($hResult)) {
+  if(mysqli_num_rows($hResult)) {
 
     echo "<h3>"._("Fuzzy matches (full words only)")."</h3>";
     echo $sTableHeader;
 
-    while($oRow = mysql_fetch_object($hResult)) {
+    while($oRow = mysqli_fetch_object($hResult)) {
 
       echo "<tr>\n";
       echo "  <td>".$oRow->lng_source."</td><td>".$oRow->lng_target."</td>"
@@ -157,9 +157,9 @@ if($_REQUEST['s']) {
               smart_quote($_REQUEST['s']."-%"),
               smart_quote("%-".$_REQUEST['s']),
               smart_quote($_REQUEST['s']));
-  $hResult = mysql_query($sQuery);
+  $hResult = mysqli_query($mysqllink, $sQuery);
 
-  if(mysql_num_rows($hResult)) {
+  if(mysqli_num_rows($hResult)) {
 
     echo "<h3>"._("Fuzzy matches (full words only) in the user's personnal "
                   ."glossaries")."</h3>";
@@ -167,7 +167,7 @@ if($_REQUEST['s']) {
          ."with care.")."</strong></p>";
     echo $sTableHeaderMemo;
 
-    while($oRow = mysql_fetch_object($hResult)) {
+    while($oRow = mysqli_fetch_object($hResult)) {
 
       echo "<tr>\n";
       echo "  <td>".$oRow->lng_source."</td><td>".$oRow->lng_target."</td>"
@@ -199,13 +199,13 @@ if($_REQUEST['s']) {
             ."AND source NOT LIKE '*%%*' AND lng_source LIKE %s "
             ."ORDER BY lng_source ASC",
               smart_quote("%".$_REQUEST['s']."%"));
-  $hResult = mysql_query($sQuery);
+  $hResult = mysqli_query($mysqllink, $sQuery);
 
-  if(mysql_num_rows($hResult)) {
+  if(mysqli_num_rows($hResult)) {
 
     echo "<h3>"._("Fuzzy matches (all)")."</h3>";
     echo $sTableHeader;
-    while($oRow = mysql_fetch_object($hResult)) {
+    while($oRow = mysqli_fetch_object($hResult)) {
 
       echo "<tr>\n";
       echo "  <td>".$oRow->lng_source."</td><td>".$oRow->lng_target."</td>"

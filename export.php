@@ -37,8 +37,8 @@ switch($_GET['f']) {
     $sQuery ="SELECT lng_source,lng_target,comment,source FROM "
              ."glossary WHERE state!='deleted' AND source NOT LIKE '*%*' "
              ."ORDER BY lng_source ASC";
-    $hResult = mysql_query($sQuery);
-    while($aRow = mysql_fetch_row($hResult)) {
+    $hResult = mysqli_query($mysqllink, $sQuery);
+    while($aRow = mysqli_fetch_row($hResult)) {
 
       echo '"';
       for($i=0;$i<sizeof($aRow);$i++) {
@@ -61,8 +61,8 @@ switch($_GET['f']) {
     $sQuery ="SELECT lng_source,lng_target,comment,source "
              ."FROM glossary WHERE state!='deleted' "
              ."AND source NOT LIKE '*%*' ORDER BY lng_source ASC";
-    $hResult = mysql_query($sQuery);
-    while($aRow = mysql_fetch_row($hResult)) {
+    $hResult = mysqli_query($mysqllink, $sQuery);
+    while($aRow = mysqli_fetch_row($hResult)) {
 
       echo '<entry>';
       for($i=0;$i<sizeof($aRow);$i++) {

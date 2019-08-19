@@ -39,7 +39,7 @@ if($_POST['action'] == "new") {
     smart_quote($_POST['comment']),
     smart_quote(($_SESSION['admin']?$_POST['source']:"*".$_SESSION['user']."*")),
     smart_quote(($_SESSION['admin']?$_SESSION['admin']:$_SESSION['user'])));
-  mysql_query($sQuery);
+  mysqli_query($mysqllink, $sQuery);
   header("Location: index.php?s=".$_POST['lng_source']);
 
 // We'd like to edit an entry.
@@ -66,7 +66,7 @@ if($_POST['action'] == "new") {
 
   }
 
-  mysql_query($sQuery);
+  mysqli_query($mysqllink, $sQuery);
   header("Location: index.php?s=".$_POST['lng_source']);
 
 } elseif ($_GET['action'] == "delete") { 
@@ -87,7 +87,7 @@ if($_POST['action'] == "new") {
 
   }
 
-  mysql_query($sQuery);
+  mysqli_query($mysqllink, $sQuery);
   header("Location: index.php?s=".$_GET['s']);
 
 // Only admins can undelete entries.
@@ -96,7 +96,7 @@ if($_POST['action'] == "new") {
   $sQuery = sprintf("UPDATE glossary SET state='edited', user=%s, date=NOW() WHERE id=%s LIMIT 1",
     smart_quote($_SESSION['admin']),
     smart_quote($_POST['id']) ) ;
-  mysql_query($sQuery);
+  mysqli_query($mysqllink, $sQuery);
   header("Location: history.php");
 
 }
@@ -120,8 +120,8 @@ if($_GET['s']) {
 
   $sQuery = sprintf("SELECT * FROM glossary WHERE id=%s LIMIT 1",
                     smart_quote($_GET['id']));
-  $hResult = mysql_query($sQuery);
-  $oRow = mysql_fetch_object($hResult);
+  $hResult = mysqli_query($mysqllink, $sQuery);
+  $oRow = mysqli_fetch_object($hResult);
   $sSubmitLabel = "modifier";
   $sStartForm .= "<input type=\"hidden\" name=\"action\" value=\"edit\" />";
   $sStartForm .= "<input type=\"hidden\" name=\"id\" value=\""
