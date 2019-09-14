@@ -47,10 +47,6 @@ $config['db_database'] = "glossary";
   // field of Altavista translation suitable for your project
   $config['at_altavista'] = "en_fr";
 
-  // "" to deactivate, otherwise, put in the value of the langpair
-  // form field of Amikai translation suitable for your project
-  $config['at_amikai'] = "EN,FR";
-
 // Don't touch anything under here.
 putenv("LANG=".$config['lng_interface']);
 setlocale(LC_ALL, $config['lng_interface']);
