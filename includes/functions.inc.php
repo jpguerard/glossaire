@@ -132,32 +132,6 @@ function get_automatic_translation($sSource) {
     $sContents=$aRegs="";
   }
 
-  // Amikai
-  if($config['at_amikai']) {
-
-    $hFile = fopen("http://standard.beta.amikai.com/amitext/"
-                   ."indexUTF8.jsp?langpair=".$config['at_amikai']
-                   ."&translate=T&sourceText=".urlencode($sSource), "r");
-
-    while ( !feof($hFile) ) $sContents .= fread($hFile, 8192);
-
-    fclose($hFile);
-
-    $aRegs = return_substring($sContents,'<textarea name="translatedText" "
-                              ."rows="2" cols="54" wrap="virtual" "
-                              ."style="background: #D8E6FC; color: #000;">',
-                              "</textarea>");
-    $sAmikai = trim($aRegs[0])!=$sSource?trim($aRegs[0]):"";
-
-    if($sAmikai) {
-        $sOutput .= "<tr>"
-                ."<td>".$sSource."</td>"
-                ."<td>".$sAmikai."</td>"
-                .'<td><a href="http://amikai.com/demo.jsp">Amikai</a></td>'
-            ."</tr>";
-    }
-  }
-
   if($sOutput) {
 
     echo "<h3>"._("Automatic translation")."</h3>";
