@@ -33,7 +33,7 @@ Install
 
 * How-to install
  - unpack the package
- - create a MySql database and user
+ - create a MySql database (with encoding utf8mb4_unicode_520_ci) and user
  - dump the content of db/structure.sql into the database
  - optionnaly dump the content of db/content.sql.gz into the database
  - rename includes/config.tpl.php into includes/config.inc.php and edit the file to reflect your configuration

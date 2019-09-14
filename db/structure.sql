@@ -18,21 +18,25 @@
 -- along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 --
 
+SET NAMES utf8mb4;
+
+-- --------------------------------------------------------
+
 -- 
 -- Structure de la table `glossary`
 -- 
 
 CREATE TABLE `glossary` (
-  `id` int(11) NOT NULL auto_increment,
-  `lng_source` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `lng_target` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `comment` text collate utf8_unicode_ci NOT NULL,
-  `source` varchar(25) collate utf8_unicode_ci NOT NULL,
-  `state` enum('new','edited','deleted') collate utf8_unicode_ci NOT NULL default 'new',
-  `user` varchar(15) collate utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lng_source` varchar(1020) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `lng_target` varchar(1020) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `source` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `state` enum('new','edited','deleted') COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'new',
+  `user` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `date` date NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
 
@@ -41,8 +45,9 @@ CREATE TABLE `glossary` (
 -- 
 
 CREATE TABLE `users` (
-  `username` varchar(15) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `admin` enum('true','false') NOT NULL default 'false',
-  PRIMARY KEY  (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='users'' table';
+  `username` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `password` varchar(128) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `admin` enum('true','false') COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'false',
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci COMMENT='users'' table';
+
