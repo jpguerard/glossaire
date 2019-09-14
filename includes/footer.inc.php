@@ -23,7 +23,7 @@
 
 <div id="hdr">
   <div id="logo">
-    <a href="http://traduc.org/">
+    <a href="https://traduc.org/">
       <img src="http://www.gnomefr.org/img/spacer" alt="">
     </a>
   </div>
@@ -38,7 +38,7 @@
       <a href="/"><?php echo _("Glossary:");?></a>
     </strong>
     <a href="doc.php"><?php echo _("Documentation");?></a> &middot;
-    <a href="http://www.traduc.org/mailman/listinfo/glossaire"><?php
+    <a href="https://www.traduc.org/mailman/listinfo/glossaire"><?php
       echo _("Contact");
     ?></a> &middot;
     <?php
@@ -59,9 +59,9 @@
 </div>
 <div id="copyright">
     Copyright &copy; 2006, Jonathan Ernst<br>
-    <a href="http://validator.w3.org/check/referer"><?php echo _("Designed");?></a>
+    <a href="https://validator.w3.org/check/referer"><?php echo _("Designed");?></a>
     <?php echo _("for");?> 
-    <a href="http://www.w3.org/"><?php echo _("standards");?></a>.
+    <a href="https://www.w3.org/"><?php echo _("standards");?></a>.
 </div>
 </body>
 </html>

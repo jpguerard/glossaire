@@ -28,7 +28,7 @@ require("./includes/header.inc.php"); ?>
 <p>Les données du glossaire peuvent être exportées dans un grand nombre
 de formats. Si votre format préféré n'est pas disponible, faites-en la
 demande sur la
-<a href="http://www.traduc.org/mailman/listinfo/glossaire">liste de diffusion</a></p>
+<a href="https://www.traduc.org/mailman/listinfo/glossaire">liste de diffusion</a></p>
 
 <ul>
   <li><p><a href="download.php?f=csv">CSV</a></p></li>
