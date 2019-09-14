@@ -247,31 +247,35 @@ if($bAuto) {
 
 }
 
-echo "
-<h2>"._("Other sources and references")."</h2>
-<ul>
-"._("<!-- Some locale related links -->
- <li><p> Office de la langue française : "
-  ."<a href=\"http://www.culture.gouv.fr/culture/dglf/\">France</a> "
-  ."- <a href=\"http://www.languefrancaise.cfwb.be/\">Belgique</a> "
-  ."- <a href=\"http://www.olf.gouv.qc.ca/\">Québec</a> "
-  ."- <a href=\"http://www.ciip.ch/ciip/DLF/\">Suisse</a></p></li>
- <li><p> Dictionnaire français-anglais : "
-  ."<a href=\"http://www.granddictionnaire.com/_fs_global_01.htm\">Grand "
-  ."dictionnaire terminologique</a> </p></li>
- <li><p> Français : "
-  ."<a href=\"http://atilf.atilf.fr/academie9.htm\">Dictionnaire "
-  ."de l'Académie</a> "
-  ."- <a href=\"http://www.softissimo.com/grammaire/\">Grammaire</a> "
-  ."- <a href=\"http://elsap1.unicaen.fr/cherches.html\">Synonymes</a></p></li>
- <li><p> Anglais :"
-  ." <a href=\"http://www.m-w.com/\">Merriam &amp; Webster</a> </p></li>
- <li><p> Glossaires informatique et Internet : "
-  ."<a href=\"http://www.linux-france.org/prj/jargonf/\">Jargon</a> "
-  ."- <a href=\"http://www-rocq.inria.fr/qui/Philippe.Deschamp/RETIF/\">RETIF</a> "
-  ."- <a href=\"http://www.culture.fr/culture/dglf/cogeter/16-03-99-internet-termetrang.html\">Ministère de la culture</a> "
-  ."- <a href=\"http://wwli.com/translation/netglos/\">NetGlos</a>.</p></li>")."
-</ul>";
+echo "<h2>"._("Other sources and references")."</h2>";
+echo "<ul>";
+
+echo _("<!-- Some locale related links -->
+<li><p> Office de la langue française :
+    <a href=\"http://www.culture.gouv.fr/culture/dglf/\">France</a>
+  - <a href=\"http://www.languefrancaise.cfwb.be/\">Belgique</a>
+  - <a href=\"http://bdl.oqlf.gouv.qc.ca/bdl/\">Québec</a>
+  - <a href=\"https://www.unine.ch/islc/en/home/recherche/dialectologie-et-etude-du-franca/dictionnaire-suisse-romand.html\">Suisse</a>
+</p></li>
+<li><p> Dictionnaire français-anglais :
+    <a href=\"http://gdt.oqlf.gouv.qc.ca/\">Grand dictionnaire terminologique</a>
+</p></li>
+<li><p> Français :
+    <a href=\"https://academie.atilf.fr/9/\">Dictionnaire de l'Académie</a>
+    - <a href=\"http://grammaire.reverso.net/\">Grammaire</a>
+    - <a href=\"https://crisco2.unicaen.fr/des/\">Synonymes</a>
+    - <a href=\"https://www.cnrtl.fr/\">CNRTL</a>
+</p></li>
+<li><p> Anglais
+    <a href=\"https://www.merriam-webster.com/\">Merriam &amp; Webster</a>
+</p></li>
+<li><p>Glossaires informatique et Internet :
+    <a href=\"http://www.linux-france.org/prj/jargonf/\">Jargon</a>
+    - <a href=\"http://deschamp.free.fr/exinria/RETIF/\">RETIF</a>
+    - <a href=\"http://www.culture.fr/culture/dglf/cogeter/16-03-99-internet-termetrang.html\">Ministère de la culture</a>.
+</p></li>");
+
+echo "</ul>";
 
 require("./includes/footer.inc.php");
 ?>
