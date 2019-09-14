@@ -24,58 +24,6 @@
 
 require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
-
-// We asked a file
-switch($_GET['f']) {
-
-  case "csv":
-    header('Content-type: text/x-comma-separated-values');
-    header('Content-Disposition: attachment; filename="export.'
-           .$_GET['f'].'"');
-    echo '"'.$config['lng_source'].'","'.$config['lng_target'].'","'
-         ._("comment").'","'._("source").'"'."\n";
-    $sQuery ="SELECT lng_source,lng_target,comment,source FROM "
-             ."glossary WHERE state!='deleted' AND source NOT LIKE '*%*' "
-             ."ORDER BY lng_source ASC";
-    $hResult = mysqli_query($mysqllink, $sQuery);
-    while($aRow = mysqli_fetch_row($hResult)) {
-
-      echo '"';
-      for($i=0;$i<sizeof($aRow);$i++) {
-        echo str_replace('"','""',$aRow[$i]);
-        if($i+1 < sizeof($aRow)) echo '","';
-      }
-      echo "\"\n";
-
-    }
-    exit;
-    break;
-
-  case "xml":
-    header('Content-type: text/xml');
-    header('Content-Disposition: attachment; filename="export.'
-           .$_GET['f'].'"');
-    $aTags = array($config['lng_source'],$config['lng_target']
-                   ,_("comment"),_("source"));
-    echo "<glossary>\n";
-    $sQuery ="SELECT lng_source,lng_target,comment,source "
-             ."FROM glossary WHERE state!='deleted' "
-             ."AND source NOT LIKE '*%*' ORDER BY lng_source ASC";
-    $hResult = mysqli_query($mysqllink, $sQuery);
-    while($aRow = mysqli_fetch_row($hResult)) {
-
-      echo '<entry>';
-      for($i=0;$i<sizeof($aRow);$i++) {
-        echo "<".$aTags[$i].">";
-        echo str_replace('<','&lt;',str_replace('>','&gt;',str_replace('&','&amp;',$aRow[$i])));
-        echo "</".$aTags[$i].">";
-      }
-      echo "</entry>\n";
-    }
-    echo '</glossary>';
-    exit;
-    break;
-} 
 require("./includes/header.inc.php"); ?>
 
 <h2>Formats d'exportation disponibles</h2>
@@ -86,8 +34,8 @@ demande sur la
 <a href="http://www.traduc.org/mailman/listinfo/glossaire">liste de diffusion</a></p>
 
 <ul>
-  <li><p><a href="export.php?f=csv">CSV</a></p></li>
-  <li><p><a href="export.php?f=xml">XML</a></p></li>
+  <li><p><a href="download.php?f=csv">CSV</a></p></li>
+  <li><p><a href="download.php?f=xml">XML</a></p></li>
 </ul>
  
 <?php require("./includes/footer.inc.php"); ?>
