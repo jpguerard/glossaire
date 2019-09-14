@@ -38,22 +38,6 @@ require("session.inc.php");
         title="glo.traduc.org"
         href="https://glossaire.traduc.org/opensearch-plugin.php">
 
-    <script>
-        // cf. https://developer.mozilla.org/en-US/docs/Web/OpenSearch
-        //     https://developer.mozilla.org/fr/docs/Ajout_de_moteurs_de_recherche_depuis_des_pages_Web
-        function installSearchEngine() {
-            if (window.external && ("AddSearchProvider" in window.external)) {
-                // Firefox 2 and IE 7, OpenSearch
-                window.external.AddSearchProvider("https://glossaire.traduc.org/opensearch-plugin.php");
-            } else {
-                // No search engine support (IE 6, Opera, etc).
-                alert("No search engine support");
-            }
-        }
-
-        installSearchEngine();
-    </script>
-
     <title><?php echo _("French-english glossary");?></title>
 </head>
 
