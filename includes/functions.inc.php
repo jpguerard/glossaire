@@ -33,13 +33,6 @@ function smart_quote($sValue)
   // No php/html tags allowed in database.
   $sValue = strip_tags($sValue);
 
-  // Stripslashes.
-  if (get_magic_quotes_gpc()) {
-
-    $sValue = stripslashes($sValue);
-
-  }
-
   // Quote if not a number or a numeric string.
   if (!is_numeric($sValue)) {
 
