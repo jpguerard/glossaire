@@ -26,8 +26,8 @@ Install
 -------
 * What you need (recommanded)
  - php 7+
- - MySql 4.1+
- - apache 1+
+ - MySQL >= 5.7.5 or MariaDB => 10.2 (mysqli driver)
+ - Any webserver with PHP and UTF-8 support
  - php gettext support for localization
  - php remote url opening for automatic translation
 
