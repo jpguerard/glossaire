@@ -12,7 +12,7 @@ CREATE TABLE `glossary` (
   `user` varchar(15) collate utf8_unicode_ci NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24139 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
 
 -- --------------------------------------------------------
 
