@@ -22,4 +22,3 @@
 $mysqllink = mysqli_connect($config['db_host'], $config['db_username'],
               $config['db_password'], $config['db_database']);
 
-?>

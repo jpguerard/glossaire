@@ -165,5 +165,6 @@ if($_SESSION['admin']) { ?>
   </form>
 
 <?php }
-require("./includes/footer.inc.php"); ?>
+
+require("./includes/footer.inc.php");
 

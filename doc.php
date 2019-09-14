@@ -106,7 +106,6 @@ traduc POINT org</a>.</p>
 <p>Les sources du glossaire sont disponibles sur <a
 href="https://github.com/fevrier/glossaire">github.com/fevrier/glossaire</a>.
 </p>
-
 <?php
+
 require("./includes/footer.inc.php");
-?>

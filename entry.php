@@ -163,5 +163,7 @@ echo $sStartForm;
   <input type="submit" value="<?php echo $sSubmitLabel;?>">
 
 </form>
+<?php
+                
+require("./includes/footer.inc.php");
 
-<?php require("./includes/footer.inc.php"); ?>

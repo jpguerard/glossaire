@@ -41,4 +41,7 @@ require("./includes/header.inc.php");
   <input type="submit" value="se connecter">
 </form>
 
-<?php require("./includes/footer.inc.php"); ?>
+<?php
+
+require("./includes/footer.inc.php");
+

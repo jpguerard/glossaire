@@ -21,8 +21,9 @@
 
 require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
-require("./includes/header.inc.php"); ?>
+require("./includes/header.inc.php");
 
+?>
 <h2>Formats d'exportation disponibles</h2>
 
 <p>Les données du glossaire peuvent être exportées dans un grand nombre
@@ -34,5 +35,7 @@ demande sur la
   <li><p><a href="download.php?f=csv">CSV</a></p></li>
   <li><p><a href="download.php?f=xml">XML</a></p></li>
 </ul>
- 
-<?php require("./includes/footer.inc.php"); ?>
+<?php
+
+require("./includes/footer.inc.php");
+

@@ -278,4 +278,4 @@ echo _("<!-- Some locale related links -->
 echo "</ul>";
 
 require("./includes/footer.inc.php");
-?>
+

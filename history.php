@@ -22,6 +22,7 @@
 require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
 require("./includes/header.inc.php");
+
 ?>
 
 <h2>Historique</h2>
@@ -100,4 +101,5 @@ function confirm_delete(id) {
 
 <?php }
 
-require("./includes/footer.inc.php"); ?>
+require("./includes/footer.inc.php");
+
