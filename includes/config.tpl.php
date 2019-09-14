@@ -60,6 +60,5 @@ setlocale(LC_ALL, $config['lng_interface']);
 bindtextdomain("messages", "./locale");
 bind_textdomain_codeset("messages","UTF-8");
 textdomain("messages");
-session_start();
 require("includes/functions.inc.php");
 ?>

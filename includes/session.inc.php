@@ -23,6 +23,8 @@
  *
  */
 
+session_start();
+
 // We tried to log in.
 if ( !$_SESSION['admin']
      && $_POST['username']

@@ -22,51 +22,7 @@
  *
  */
 
-// We tried to log in.
-if ( !$_SESSION['admin']
-     && $_POST['username']
-     && $_POST['password']
-     && !$_POST['action'] ) {
-
-  $sQuery = sprintf("SELECT username,admin FROM users WHERE username=%s "
-                    ."AND password=MD5(%s) LIMIT 1",
-                      smart_quote($_POST['username']),
-                      smart_quote($_POST['password']));
-  $hResult = mysqli_query($mysqllink, $sQuery);
-  $oRow = mysqli_fetch_object($hResult);
-
-  if($oRow->username && $oRow->admin=="true") {
-
-    $_SESSION['admin'] = $_POST['username'];
-
-  } elseif($oRow->username) {
-
-    $_SESSION['user'] = $_POST['username'];
-
-  } else {
-
-    syslog(LOG_NOTICE, "Echec de connexion de "
-                       .$_POST['username']." au glossaire");
-
-  }
-} elseif($_GET['logout']) {
-
-    $_SESSION['admin'] = "";   
-    $_SESSION['user'] = ""; 
-
-}
-
-// $_SESSION['total'] is used to show the total number of records in
-// the database.
-// Let's compute it only if it hasn't been computed in this session.
-if(!$_SESSION['total']) {
-
-    $sQuery = "SELECT count(1) as total FROM glossary";
-    $hResult = mysqli_query($mysqllink, $sQuery);
-    $oRow = mysqli_fetch_object($hResult);
-    $_SESSION['total'] = $oRow->total;
-
-}
+require("session.inc.php");
 
 header("Content-Type: text/html; charset=utf-8");
 echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
