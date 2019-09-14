@@ -32,7 +32,7 @@ CREATE TABLE `glossary` (
   `user` varchar(15) collate utf8_unicode_ci NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
 
 -- --------------------------------------------------------
 
@@ -45,4 +45,4 @@ CREATE TABLE `users` (
   `password` varchar(32) NOT NULL,
   `admin` enum('true','false') NOT NULL default 'false',
   PRIMARY KEY  (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='users'' table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='users'' table';
