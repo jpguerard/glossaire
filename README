@@ -62,6 +62,3 @@ Localization (don't forget to send your changes to jonathan@ernstfamily.ch)
  - poedit messages.po 
  - msgfmt messages.po
 
-
-
-

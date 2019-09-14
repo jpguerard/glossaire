@@ -40,6 +40,12 @@ The followin "coding standards" should be followed:
   * short php tags are conflicting with <?xml ?> tags used in XHTML for example
   * so please always use long tags <?php ?>
 
+====== Encoding ====== 
+  * Use UTF-8 only
+  * Use LF as end of line only
+
+
+
 // TODO: TRANSLATE THE FOLLOWING
 
 ====== Variable names and global variables ====== 
@@ -170,3 +176,4 @@ function login($sUserName = 'nobody', $sUserPass = 'nobody') {
   * utilisez des noms comme "UtilisateurSysteme" pour nommer vos classes (comme en java)
   * les méthodes sont également nommée de cette façon: isHappy()
   * le reste des règles s'applique de la même façon
+
