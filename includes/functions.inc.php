@@ -90,7 +90,7 @@ function get_automatic_translation($sSource) {
 
     $aRegs = return_substring(
                 $sContents,
-                "<textarea name=q rows=5 cols=45 wrap=PHYSICAL dir=ltr>",
+                '<textarea name="q" rows="5" cols="45" wrap="PHYSICAL" dir="ltr>',
                 "</textarea>");
 
     $sGoogle = trim($aRegs[0])!=$sSource?trim(mb_convert_encoding($aRegs[0],
@@ -98,8 +98,9 @@ function get_automatic_translation($sSource) {
     if($sGoogle) {
 
       $sOutput .= "<tr><td>".$sSource."</td><td>".$sGoogle."</td>"
-                  ."<td><a href=\"https://translate.google.com/"
-                  ."translate_t\">Google</a></td></tr>";
+          ."<td>"
+          .'<a href="https://translate.google.com/translate_t">Google</a>'
+          ."</td></tr>";
 
     }
     $sContents=$aRegs="";
@@ -121,9 +122,11 @@ function get_automatic_translation($sSource) {
     $sAltavista = trim($aRegs[0])!=$sSource?trim(mb_convert_encoding($aRegs[0],
                                                  "UTF-8" ,"ISO-8859-1")):"";
     if($sAltavista) {
-
-      $sOutput .= "<tr><td>".$sSource."</td><td>".$sAltavista."</td><td><a href=\"http://babelfish.altavista.com/tr\">Altavista</a></td></tr>";
-
+        $sOutput .= "<tr>"
+            ."<td>".$sSource."</td>"
+            ."<td>".$sAltavista."</td>"
+            .'<td><a href="http://babelfish.altavista.com/tr">Altavista</a></td>'
+            ."</tr>";
     }
 
     $sContents=$aRegs="";
@@ -140,16 +143,18 @@ function get_automatic_translation($sSource) {
 
     fclose($hFile);
 
-    $aRegs = return_substring($sContents,"<textarea name=\"translatedText\" "
-                              ."rows=\"2\" cols=\"54\" wrap=\"virtual\" "
-                              ."style=\"background: #D8E6FC; color: #000;\">",
+    $aRegs = return_substring($sContents,'<textarea name="translatedText" "
+                              ."rows="2" cols="54" wrap="virtual" "
+                              ."style="background: #D8E6FC; color: #000;">',
                               "</textarea>");
     $sAmikai = trim($aRegs[0])!=$sSource?trim($aRegs[0]):"";
 
     if($sAmikai) {
-      $sOutput .= "<tr><td>".$sSource."</td><td>".$sAmikai
-                  ."</td><td><a href=\"http://amikai.com/demo.jsp\">"
-                  ."Amikai</a></td></tr>";
+        $sOutput .= "<tr>"
+                ."<td>".$sSource."</td>"
+                ."<td>".$sAmikai."</td>"
+                .'<td><a href="http://amikai.com/demo.jsp">Amikai</a></td>'
+            ."</tr>";
     }
   }
 

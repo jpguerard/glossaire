@@ -27,9 +27,8 @@ echo "<h1>"._("Glossary")."</h1>\n"
      ."<form name=\"f\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">"
      ."<div>"
        ."<input name=\"s\" type=\"text\" "
-                ."value=\"".stripslashes($_REQUEST['s'])."\" "
-       ."/>"
-       ."<input type=\"submit\" value=\""._("search")."\" />"
+                ."value=\"".stripslashes($_REQUEST['s'])."\">"
+       ."<input type=\"submit\" value=\""._("search")."\">"
      ."</div>\n"
      ."</form>";
 
@@ -61,7 +60,7 @@ if($_REQUEST['s']) {
 
     echo " <a href=\"entry.php?s=".stripslashes($_REQUEST['s'])."\">"
          ."<img src=\"./images/new.png\" alt=\"["._("add")."]\" "
-         ."title=\""._("add a new entry into the glossary")."\" /></a>";
+         ."title=\""._("add a new entry into the glossary")."\"></a>";
 
   }
 
@@ -90,10 +89,10 @@ if($_REQUEST['s']) {
       if($_SESSION['admin']) {
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-             ."title=\"modifier l'entrée\" /></a>&nbsp;"
+             ."title=\"modifier l'entrée\"></a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-             ."title=\"supprimer l'entrée\" /></a></td>";
+             ."title=\"supprimer l'entrée\"></a></td>";
       }
       echo "</tr>\n";
     }
@@ -130,11 +129,11 @@ if($_REQUEST['s']) {
       if($_SESSION['admin']) {
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-                    ."title=\"modifier l'entrée\" />"
+                    ."title=\"modifier l'entrée\">"
              ."</a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
                ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-                      ."title=\"supprimer l'entrée\" />"
+                      ."title=\"supprimer l'entrée\">"
              ."</a></td>";
       }
       echo "</tr>\n";
@@ -178,11 +177,11 @@ if($_REQUEST['s']) {
 
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-                    ."title=\"modifier l'entrée\" />"
+                    ."title=\"modifier l'entrée\">"
              ."</a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-                    ."title=\"supprimer l'entrée\" /></a></td>";
+                    ."title=\"supprimer l'entrée\"></a></td>";
 
       } elseif($_SESSION['user']) {
 
@@ -214,11 +213,11 @@ if($_REQUEST['s']) {
 
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-                    ."title=\"modifier l'entrée\" />"
+                    ."title=\"modifier l'entrée\">"
              ."</a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-                    ."title=\"supprimer l'entrée\" /></a></td>";
+                    ."title=\"supprimer l'entrée\"></a></td>";
       }
       echo "</tr>\n";
     }

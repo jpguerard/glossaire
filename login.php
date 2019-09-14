@@ -35,9 +35,9 @@ require("./includes/header.inc.php");
    <a href="user.php">inscrivez-vous</a>.</strong></p>
 <form method="post" action="index.php">
   <label for="username">Nom d'utilisateur :
-    </label><input id="username" name="username" type="text" /><br />
+    </label><input id="username" name="username" type="text"><br>
   <label for="password">Mot de passe :
-    </label><input id="password" name="password" type="password" /><br />
+    </label><input id="password" name="password" type="password"><br>
   <input type="submit" value="se connecter">
 </form>
 

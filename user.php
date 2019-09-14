@@ -108,29 +108,29 @@ if($_SESSION['admin']) { ?>
 
   <h2>Ajouter un administrateur</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="new" />
+    <input type="hidden" name="action" value="new">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="ajouter">
   </form>
 
   <h2>Modifier un mot de passe</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="edit" />
+    <input type="hidden" name="action" value="edit">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="modifier">
   </form>
 
   <h2>Supprimer un utilisateur</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="delete" />
+    <input type="hidden" name="action" value="delete">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <input type="submit" value="supprimer">
   </form>
 
@@ -141,11 +141,11 @@ if($_SESSION['admin']) { ?>
 
   <h2>Modifier son mot de passe</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="edit" />
+    <input type="hidden" name="action" value="edit">
     <label for="oldpassword">Ancien mot de passe : </label>
-    <input id="oldpassword" name="oldpassword" type="password" /><br />
+    <input id="oldpassword" name="oldpassword" type="password"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="modifier">
   </form>
 
@@ -156,11 +156,11 @@ if($_SESSION['admin']) { ?>
 
   <h2>S'inscrire</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="new" />
+    <input type="hidden" name="action" value="new">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="ajouter">
   </form>
 

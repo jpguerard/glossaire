@@ -66,14 +66,14 @@ if($hResult) {
       if($oRow->state != 'deleted') {
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-             ."title=\"modifier l'entrée\" /></a>&nbsp;"
+             ."title=\"modifier l'entrée\"></a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-             ."title=\"supprimer l'entrée\" /></a></td>";
+             ."title=\"supprimer l'entrée\"></a></td>";
       } else {
         echo "<td><a href=\"entry.php?action=undelete&id=".$oRow->id."\">"
              ."<img src=\"./images/undelete.png\" alt=\"[restaurer]\" "
-             ."title=\"restaure l'entrée supprimée\" /></a></td>";
+             ."title=\"restaure l'entrée supprimée\"></a></td>";
       }
     }
     echo "</tr>\n";
