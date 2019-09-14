@@ -45,20 +45,20 @@ Install
  - compare db/structure.sql with your current database structure and make changes accordingly
 
 
-Localization (don't forget to send your changes to jonathan@ernstfamily.ch)
+Localization (don't forget to send your changes to jean-philippe.guerard@tigrerayé.org)
 ------------
 * To update the .po template:
- - xgettext --from-code=UTF-8 --language=PHP -o locale/messages.po index.php
- - find ./ -iname "*.php" -exec xgettext --from-code=UTF-8 --language=PHP -j -o locale/messages.po {} \;
+ - xgettext --msgid-bugs-address=jean-philippe.guerard@tigrerayé.org  --package-name=glossary -c -n -s --from-code=UTF-8 --language=PHP -o locale/messages.pot index.php
+ - find ./ -iname "*.php" -exec xgettext --from-code=UTF-8 --language=PHP -j -o locale/messages.pot {} \;
 * To create a new translation  (replace fr_FR with your locale)
  - mkdir -p locale/fr_FR/LC_MESSAGES
- - cp locale/messages.po locale/fr_FR/LC_MESSAGES/
+ - cp locale/messages.pot locale/fr_FR/LC_MESSAGES/messages.po
 * To update an existing translation (replace fr_FR with your locale and poedit with your favorite editor)
  - update the .po template
  - cd locale/fr_FR/LC_MESSAGES
- - msgmerge messages.po ../../messages.po -o messages.new.po
+ - msgmerge  --previous -s messages.po ../../messages.po -o messages.new.po
  - rm messages.po
  - mv messages.new.po messages.po
- - poedit messages.po 
+ - poedit messages.po
  - msgfmt messages.po
 
