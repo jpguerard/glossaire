@@ -31,19 +31,27 @@ require("session.inc.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link rel="stylesheet" type="text/css" href="./style/default.css">
-    <link rel="icon" type="image/png" href="https://wiki.traduc.org/moin_static/icone.png">
+    <link rel="icon" type="image/png" href="./images/icon.png">
+
+    <link rel="search"
+        type="application/opensearchdescription+xml"
+        title="glo.traduc.org"
+        href="https://glossaire.traduc.org/opensearch-plugin.php">
 
     <script>
-        function addEngine() {
-            if ((typeof window.sidebar == "object") && (typeof window.sidebar.addSearchEngine == "function"))
-            {
-                window.sidebar.addSearchEngine(
-                    "https://glossaire.traduc.org/glossaire.src",  /* engine URL */
-                    "https://glossaire.traduc.org/glossaire.png",  /* icon URL */
-                    "glossaire.traduc.org",                        /* engine name */
-                    "Web" );                                       /* category name */
+        // cf. https://developer.mozilla.org/en-US/docs/Web/OpenSearch
+        //     https://developer.mozilla.org/fr/docs/Ajout_de_moteurs_de_recherche_depuis_des_pages_Web
+        function installSearchEngine() {
+            if (window.external && ("AddSearchProvider" in window.external)) {
+                // Firefox 2 and IE 7, OpenSearch
+                window.external.AddSearchProvider("https://glossaire.traduc.org/opensearch-plugin.php");
+            } else {
+                // No search engine support (IE 6, Opera, etc).
+                alert("No search engine support");
             }
         }
+
+        installSearchEngine();
     </script>
 
     <title><?php echo _("French-english glossary");?></title>
