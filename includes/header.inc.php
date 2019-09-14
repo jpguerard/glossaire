@@ -43,10 +43,6 @@ require("session.inc.php");
                     "glossaire.traduc.org",                        /* engine name */
                     "Web" );                                       /* category name */
             }
-            else
-            {
-                alert("Mozilla M15 or later is required to add a search engine.");
-            }
         }
     </script>
 
