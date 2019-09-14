@@ -107,11 +107,13 @@ function get_automatic_translation($sSource) {
   }
 
   // Altavista babelfish 
-  if($config['at_altavista']) {
-
-    $hFile = fopen("http://babelfish.altavista.com/tr?ienc=utf8&lp="
-                   .$config['at_altavista']."&trtext="
-                   .urlencode($sSource), "r");
+  if($config['at_babelfish_dst']) {
+      $hFile = fopen(
+          "https://www.babelfish.fr/dict"
+            ."?src=".$config['at_babelfish_src']
+            ."&dst=".$config['at_babelfish_dst']
+            ."&query=".urlencode($sSource),
+          "r");
     while ( !feof($hFile) ) $sContents .= fread($hFile, 8192);
 
     fclose($hFile);
@@ -119,13 +121,12 @@ function get_automatic_translation($sSource) {
     $aRegs = return_substring($sContents,"<input type=hidden "
                               ."name=\"q\" value=\"","\">");
     
-    $sAltavista = trim($aRegs[0])!=$sSource?trim(mb_convert_encoding($aRegs[0],
-                                                 "UTF-8" ,"ISO-8859-1")):"";
-    if($sAltavista) {
+    $sResults = trim($aRegs[0])!=$sSource?trim($aRegs[0]):"";
+    if($sResults) {
         $sOutput .= "<tr>"
             ."<td>".$sSource."</td>"
-            ."<td>".$sAltavista."</td>"
-            .'<td><a href="http://babelfish.altavista.com/tr">Altavista</a></td>'
+            ."<td>".$sResults."</td>"
+            .'<td><a href="https://www.babelfish.fr/dict">BabelFish</a></td>'
             ."</tr>";
     }
 

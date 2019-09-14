@@ -43,9 +43,10 @@ $config['db_database'] = "glossary";
   // form field of Google translation suitable for your project
   $config['at_google'] = "en|fr";
 
-  // "" to deactivate, otherwise, put in the value of the lp form
-  // field of Altavista translation suitable for your project
-  $config['at_altavista'] = "en_fr";
+  // "" to deactivate, otherwise, put in the value of the dst form
+  // field of BabelFish translation suitable for your project
+  $config['at_babelfish_src'] = "auto";
+  $config['at_babelfish_dst'] = "fr";
 
 // Don't touch anything under here.
 putenv("LANG=".$config['lng_interface']);
