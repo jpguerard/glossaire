@@ -1,6 +1,6 @@
 <?php
 /*
- * Glossary's pages header and login logic.
+ * Glossary's session logic.
  *
  * Copyright (C) 2006 Jonathan Ernst
  * Copyright (C) 2006-2019 Jean-Philippe Guérard
