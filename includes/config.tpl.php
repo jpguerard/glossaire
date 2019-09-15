@@ -3,7 +3,8 @@
  * Glossary's database configuration.
  *
  * Copyright (C) 2006 Jonathan Ernst
- * Copyright (C) 2006-2011 Jean-Philippe Guérard
+ * Copyright (C) 2006-2019 Jean-Philippe Guérard
+ * Copyright (C) 2019 Stéphane Aulery
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,10 +17,7 @@
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA  02110-1301  USA.
- *
+ * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 // Database configuration
@@ -46,20 +44,13 @@ $config['db_database'] = "glossary";
   // form field of Google translation suitable for your project
   $config['at_google'] = "en|fr";
 
-  // "" to deactivate, otherwise, put in the value of the lp form
-  // field of Altavista translation suitable for your project
-  $config['at_altavista'] = "en_fr";
-
-  // "" to deactivate, otherwise, put in the value of the langpair
-  // form field of Amikai translation suitable for your project
-  $config['at_amikai'] = "EN,FR";
+  // "" to deactivate, otherwise, put in the value of the dst form
+  // field of BabelFish translation suitable for your project
+  $config['at_babelfish_src'] = "auto";
+  $config['at_babelfish_dst'] = "fr";
 
 // Don't touch anything under here.
-putenv("LANG=".$config['lng_interface']);
-setlocale(LC_ALL, $config['lng_interface']);
-bindtextdomain("messages", "./locale");
-bind_textdomain_codeset("messages","UTF-8");
-textdomain("messages");
-session_start();
+
+require("includes/locales.inc.php");
 require("includes/functions.inc.php");
-?>
+

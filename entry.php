@@ -3,7 +3,8 @@
  * Glossary entry management page.
  *
  * Copyright (C) 2006 Jonathan Ernst
- * Copyright (C) 2006-2011 Jean-Philippe Guérard
+ * Copyright (C) 2006-2019 Jean-Philippe Guérard
+ * Copyright (C) 2019 Stéphane Aulery
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,10 +17,7 @@
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA  02110-1301  USA.
- *
+ * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 require("./includes/config.inc.php");
@@ -109,11 +107,11 @@ $sStartForm = "<form method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">\n";
 if($_GET['s']) {
 
   $sSubmitLabel = _("add");
-  $sStartForm .= "<input type=\"hidden\" name=\"action\" value=\"new\" />";
+  $sStartForm .= "<input type=\"hidden\" name=\"action\" value=\"new\">";
   $sStartForm .= "<label for=\"lng_source\">"._("SOURCELANGUAGE:")
                  ."</label><input id=\"lng_source\" name=\"lng_source\" "
-                 ."type=\"text\" value=\"".stripslashes($_GET['s'])."\" />"
-                 ."<br />";
+                 ."type=\"text\" value=\"".stripslashes($_GET['s'])."\">"
+                 ."<br>";
 
 // We want to edit an entry.
 } elseif($_GET['id']) {
@@ -123,13 +121,13 @@ if($_GET['s']) {
   $hResult = mysqli_query($mysqllink, $sQuery);
   $oRow = mysqli_fetch_object($hResult);
   $sSubmitLabel = "modifier";
-  $sStartForm .= "<input type=\"hidden\" name=\"action\" value=\"edit\" />";
+  $sStartForm .= "<input type=\"hidden\" name=\"action\" value=\"edit\">";
   $sStartForm .= "<input type=\"hidden\" name=\"id\" value=\""
-                 .$_GET['id']."\" />";
+                 .$_GET['id']."\">";
   $sStartForm .= "<label for=\"lng_source\">"._("SOURCELANGUAGE:")
                  ."</label><input readonly=\"readonly\" id=\"lng_source\" "
                  ."name=\"lng_source\" type=\"text\" value=\""
-                 .$oRow->lng_source."\" /> ("._("read only").")<br />";
+                 .$oRow->lng_source."\"> ("._("read only").")<br>";
 
 }
 
@@ -139,18 +137,17 @@ echo $sStartForm;
 
   <label for="lng_target"><?php echo _("TARGETLANGUAGE:");?></label>
   <input id="lng_target" name="lng_target" type="text"
-         value="<?php echo $oRow->lng_target;?>" /><br />
+         value="<?php echo $oRow->lng_target;?>"><br>
   <label for="comment"><?php echo _("Comments:");?></label>
   <textarea style="width:18.5em" rows="3" id="comment" name="comment"><?php
     echo $oRow->comment;
-  ?></textarea> (détails, liens vers discussions ou référence)<br />
+  ?></textarea> (détails, liens vers discussions ou référence)<br>
 
 <?php if($_SESSION['user']) { ?>
 
   <label for="source">Source&nbsp;:</label>
   <input readonly="readonly" maxlength="25" id="source" name="source"
-         type="text" value="<?php echo prepare_source($oRow->source);?>"
-  /> (lecture seule)<br />
+         type="text" value="<?php echo prepare_source($oRow->source);?>"> (lecture seule)<br>
 
 <?php } else { ?>
 
@@ -159,13 +156,15 @@ echo $sStartForm;
          value="<?php
            echo $oRow->source?$oRow->source:"*"
                 .$_SESSION['admin']."*";?>"
-  /> (par ex. Kde, GNOME, Mozilla, Sun, *<?php echo $_SESSION['admin'];?>*)
-  <br />
+  > (par ex. Kde, GNOME, Mozilla, Sun, *<?php echo $_SESSION['admin'];?>*)
+  <br>
 
 <?php } ?>
 
   <input type="submit" value="<?php echo $sSubmitLabel;?>">
 
 </form>
+<?php
+                
+require("./includes/footer.inc.php");
 
-<?php require("./includes/footer.inc.php"); ?>

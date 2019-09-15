@@ -1,6 +1,6 @@
 <?php
 /*
- * Login page for the Glossary (the login logic is in includes/header.inc.php).
+ * Glossary's locales configuration.
  *
  * Copyright (C) 2006 Jonathan Ernst
  * Copyright (C) 2006-2019 Jean-Philippe Guérard
@@ -20,29 +20,9 @@
  * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-require("./includes/config.inc.php");
-
-if ( $_SESSION['admin'] || $_SESSION['user'] ) {
-  header("Location: index.php");
-}
-
-require("./includes/mysql.inc.php");
-require("./includes/header.inc.php");
-
-?>
-
-<h2>Connexion</h2>
-<p><strong>Si vous souhaitez obtenir un compte,
-   <a href="user.php">inscrivez-vous</a>.</strong></p>
-<form method="post" action="index.php">
-  <label for="username">Nom d'utilisateur :
-    </label><input id="username" name="username" type="text"><br>
-  <label for="password">Mot de passe :
-    </label><input id="password" name="password" type="password"><br>
-  <input type="submit" value="se connecter">
-</form>
-
-<?php
-
-require("./includes/footer.inc.php");
+putenv("LANG=".$config['lng_interface']);
+setlocale(LC_ALL, $config['lng_interface']);
+bindtextdomain("messages", "./locale");
+bind_textdomain_codeset("messages","UTF-8");
+textdomain("messages");
 

@@ -1,9 +1,7 @@
 <?php
 /*
- * MySql connection include.
+ * Glossary's constants.
  *
- * Copyright (C) 2006 Jonathan Ernst
- * Copyright (C) 2006-2019 Jean-Philippe Guérard
  * Copyright (C) 2019 Stéphane Aulery
  * 
  * This program is free software; you can redistribute it and/or
@@ -20,6 +18,5 @@
  * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-$mysqllink = mysqli_connect($config['db_host'], $config['db_username'],
-              $config['db_password'], $config['db_database']);
+define("GLO_EXPORT_FORMATS", "csv,xml");
 

@@ -2,6 +2,7 @@ Glossary's readme
 
 Copyright (C) 2006 Jonathan Ernst
 Copyright (C) 2007-2019 Jean-Philippe Guérard
+Copyright (C) 2019 Stéphane Aulery
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -14,26 +15,25 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software 
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
 ===============================================================================
 
 License
 -------
-See COPYING.
+See COPYING file.
 
 Install
 -------
 * What you need (recommanded)
- - php 7+
- - MySql 4.1+
- - apache 1+
+ - PHP 7+
+ - MySQL >= 5.7.5 or MariaDB => 10.2 (mysqli driver)
+ - Any webserver with PHP and UTF-8 support
  - php gettext support for localization
  - php remote url opening for automatic translation
 
 * How-to install
  - unpack the package
- - create a MySql database and user
+ - create a MySql database (with encoding utf8mb4_unicode_520_ci) and user
  - dump the content of db/structure.sql into the database
  - optionnaly dump the content of db/content.sql.gz into the database
  - rename includes/config.tpl.php into includes/config.inc.php and edit the file to reflect your configuration
@@ -45,23 +45,20 @@ Install
  - compare db/structure.sql with your current database structure and make changes accordingly
 
 
-Localization (don't forget to send your changes to jonathan@ernstfamily.ch)
+Localization (don't forget to send your changes to jean-philippe.guerard@tigrerayé.org)
 ------------
 * To update the .po template:
- - xgettext --from-code=UTF-8 --language=PHP -o locale/messages.po index.php
- - find ./ -iname "*.php" -exec xgettext --from-code=UTF-8 --language=PHP -j -o locale/messages.po {} \;
+ - xgettext --msgid-bugs-address=jean-philippe.guerard@tigrerayé.org  --package-name=glossary -c -n -s --from-code=UTF-8 --language=PHP -o locale/messages.pot index.php
+ - find ./ -iname "*.php" -exec xgettext --from-code=UTF-8 --language=PHP -j -o locale/messages.pot {} \;
 * To create a new translation  (replace fr_FR with your locale)
  - mkdir -p locale/fr_FR/LC_MESSAGES
- - cp locale/messages.po locale/fr_FR/LC_MESSAGES/
+ - cp locale/messages.pot locale/fr_FR/LC_MESSAGES/messages.po
 * To update an existing translation (replace fr_FR with your locale and poedit with your favorite editor)
  - update the .po template
  - cd locale/fr_FR/LC_MESSAGES
- - msgmerge messages.po ../../messages.po -o messages.new.po
+ - msgmerge  --previous -s messages.po ../../messages.po -o messages.new.po
  - rm messages.po
  - mv messages.new.po messages.po
- - poedit messages.po 
+ - poedit messages.po
  - msgfmt messages.po
-
-
-
 

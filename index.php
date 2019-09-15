@@ -3,7 +3,8 @@
  * Glossary's search engine.
  *
  * Copyright (C) 2006 Jonathan Ernst
- * Copyright (C) 2006-2011 Jean-Philippe Guérard
+ * Copyright (C) 2006-2019 Jean-Philippe Guérard
+ * Copyright (C) 2019 Stéphane Aulery
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,8 +17,7 @@
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+ * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 require("./includes/config.inc.php");
@@ -28,9 +28,8 @@ echo "<h1>"._("Glossary")."</h1>\n"
      ."<form name=\"f\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">"
      ."<div>"
        ."<input name=\"s\" type=\"text\" "
-                ."value=\"".stripslashes($_REQUEST['s'])."\" "
-       ."/>"
-       ."<input type=\"submit\" value=\""._("search")."\" />"
+                ."value=\"".stripslashes($_REQUEST['s'])."\">"
+       ."<input type=\"submit\" value=\""._("search")."\">"
      ."</div>\n"
      ."</form>";
 
@@ -62,7 +61,7 @@ if($_REQUEST['s']) {
 
     echo " <a href=\"entry.php?s=".stripslashes($_REQUEST['s'])."\">"
          ."<img src=\"./images/new.png\" alt=\"["._("add")."]\" "
-         ."title=\""._("add a new entry into the glossary")."\" /></a>";
+         ."title=\""._("add a new entry into the glossary")."\"></a>";
 
   }
 
@@ -91,10 +90,10 @@ if($_REQUEST['s']) {
       if($_SESSION['admin']) {
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-             ."title=\"modifier l'entrée\" /></a>&nbsp;"
+             ."title=\"modifier l'entrée\"></a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-             ."title=\"supprimer l'entrée\" /></a></td>";
+             ."title=\"supprimer l'entrée\"></a></td>";
       }
       echo "</tr>\n";
     }
@@ -131,11 +130,11 @@ if($_REQUEST['s']) {
       if($_SESSION['admin']) {
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-                    ."title=\"modifier l'entrée\" />"
+                    ."title=\"modifier l'entrée\">"
              ."</a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
                ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-                      ."title=\"supprimer l'entrée\" />"
+                      ."title=\"supprimer l'entrée\">"
              ."</a></td>";
       }
       echo "</tr>\n";
@@ -179,11 +178,11 @@ if($_REQUEST['s']) {
 
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-                    ."title=\"modifier l'entrée\" />"
+                    ."title=\"modifier l'entrée\">"
              ."</a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-                    ."title=\"supprimer l'entrée\" /></a></td>";
+                    ."title=\"supprimer l'entrée\"></a></td>";
 
       } elseif($_SESSION['user']) {
 
@@ -215,11 +214,11 @@ if($_REQUEST['s']) {
 
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-                    ."title=\"modifier l'entrée\" />"
+                    ."title=\"modifier l'entrée\">"
              ."</a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-                    ."title=\"supprimer l'entrée\" /></a></td>";
+                    ."title=\"supprimer l'entrée\"></a></td>";
       }
       echo "</tr>\n";
     }
@@ -249,31 +248,35 @@ if($bAuto) {
 
 }
 
-echo "
-<h2>"._("Other sources and references")."</h2>
-<ul>
-"._("<!-- Some locale related links -->
- <li><p> Office de la langue française : "
-  ."<a href=\"http://www.culture.gouv.fr/culture/dglf/\">France</a> "
-  ."- <a href=\"http://www.languefrancaise.cfwb.be/\">Belgique</a> "
-  ."- <a href=\"http://www.olf.gouv.qc.ca/\">Québec</a> "
-  ."- <a href=\"http://www.ciip.ch/ciip/DLF/\">Suisse</a></p></li>
- <li><p> Dictionnaire français-anglais : "
-  ."<a href=\"http://www.granddictionnaire.com/_fs_global_01.htm\">Grand "
-  ."dictionnaire terminologique</a> </p></li>
- <li><p> Français : "
-  ."<a href=\"http://atilf.atilf.fr/academie9.htm\">Dictionnaire "
-  ."de l'Académie</a> "
-  ."- <a href=\"http://www.softissimo.com/grammaire/\">Grammaire</a> "
-  ."- <a href=\"http://elsap1.unicaen.fr/cherches.html\">Synonymes</a></p></li>
- <li><p> Anglais :"
-  ." <a href=\"http://www.m-w.com/\">Merriam &amp; Webster</a> </p></li>
- <li><p> Glossaires informatique et Internet : "
-  ."<a href=\"http://www.linux-france.org/prj/jargonf/\">Jargon</a> "
-  ."- <a href=\"http://www-rocq.inria.fr/qui/Philippe.Deschamp/RETIF/\">RETIF</a> "
-  ."- <a href=\"http://www.culture.fr/culture/dglf/cogeter/16-03-99-internet-termetrang.html\">Ministère de la culture</a> "
-  ."- <a href=\"http://wwli.com/translation/netglos/\">NetGlos</a>.</p></li>")."
-</ul>";
+echo "<h2>"._("Other sources and references")."</h2>";
+echo "<ul>";
+
+echo _("<!-- Some locale related links -->
+<li><p> Office de la langue française :
+    <a href=\"http://www.culture.gouv.fr/culture/dglf/\">France</a>
+  - <a href=\"http://www.languefrancaise.cfwb.be/\">Belgique</a>
+  - <a href=\"http://bdl.oqlf.gouv.qc.ca/bdl/\">Québec</a>
+  - <a href=\"https://www.unine.ch/islc/en/home/recherche/dialectologie-et-etude-du-franca/dictionnaire-suisse-romand.html\">Suisse</a>
+</p></li>
+<li><p> Dictionnaire français-anglais :
+    <a href=\"http://gdt.oqlf.gouv.qc.ca/\">Grand dictionnaire terminologique</a>
+</p></li>
+<li><p> Français :
+    <a href=\"https://academie.atilf.fr/9/\">Dictionnaire de l'Académie</a>
+    - <a href=\"http://grammaire.reverso.net/\">Grammaire</a>
+    - <a href=\"https://crisco2.unicaen.fr/des/\">Synonymes</a>
+    - <a href=\"https://www.cnrtl.fr/\">CNRTL</a>
+</p></li>
+<li><p> Anglais
+    <a href=\"https://www.merriam-webster.com/\">Merriam &amp; Webster</a>
+</p></li>
+<li><p>Glossaires informatique et Internet :
+    <a href=\"http://www.linux-france.org/prj/jargonf/\">Jargon</a>
+    - <a href=\"http://deschamp.free.fr/exinria/RETIF/\">RETIF</a>
+    - <a href=\"http://www.culture.fr/culture/dglf/cogeter/16-03-99-internet-termetrang.html\">Ministère de la culture</a>.
+</p></li>");
+
+echo "</ul>";
 
 require("./includes/footer.inc.php");
-?>
+

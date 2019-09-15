@@ -16,10 +16,7 @@
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA  02110-1301  USA.
- *
+ * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 /**
@@ -32,13 +29,6 @@ function smart_quote($sValue)
 
   // No php/html tags allowed in database.
   $sValue = strip_tags($sValue);
-
-  // Stripslashes.
-  if (get_magic_quotes_gpc()) {
-
-    $sValue = stripslashes($sValue);
-
-  }
 
   // Quote if not a number or a numeric string.
   if (!is_numeric($sValue)) {
@@ -100,7 +90,7 @@ function get_automatic_translation($sSource) {
 
     $aRegs = return_substring(
                 $sContents,
-                "<textarea name=q rows=5 cols=45 wrap=PHYSICAL dir=ltr>",
+                '<textarea name="q" rows="5" cols="45" wrap="PHYSICAL" dir="ltr>',
                 "</textarea>");
 
     $sGoogle = trim($aRegs[0])!=$sSource?trim(mb_convert_encoding($aRegs[0],
@@ -108,19 +98,22 @@ function get_automatic_translation($sSource) {
     if($sGoogle) {
 
       $sOutput .= "<tr><td>".$sSource."</td><td>".$sGoogle."</td>"
-                  ."<td><a href=\"https://translate.google.com/"
-                  ."translate_t\">Google</a></td></tr>";
+          ."<td>"
+          .'<a href="https://translate.google.com/translate_t">Google</a>'
+          ."</td></tr>";
 
     }
     $sContents=$aRegs="";
   }
 
   // Altavista babelfish 
-  if($config['at_altavista']) {
-
-    $hFile = fopen("http://babelfish.altavista.com/tr?ienc=utf8&lp="
-                   .$config['at_altavista']."&trtext="
-                   .urlencode($sSource), "r");
+  if($config['at_babelfish_dst']) {
+      $hFile = fopen(
+          "https://www.babelfish.fr/dict"
+            ."?src=".$config['at_babelfish_src']
+            ."&dst=".$config['at_babelfish_dst']
+            ."&query=".urlencode($sSource),
+          "r");
     while ( !feof($hFile) ) $sContents .= fread($hFile, 8192);
 
     fclose($hFile);
@@ -128,39 +121,16 @@ function get_automatic_translation($sSource) {
     $aRegs = return_substring($sContents,"<input type=hidden "
                               ."name=\"q\" value=\"","\">");
     
-    $sAltavista = trim($aRegs[0])!=$sSource?trim(mb_convert_encoding($aRegs[0],
-                                                 "UTF-8" ,"ISO-8859-1")):"";
-    if($sAltavista) {
-
-      $sOutput .= "<tr><td>".$sSource."</td><td>".$sAltavista."</td><td><a href=\"http://babelfish.altavista.com/tr\">Altavista</a></td></tr>";
-
+    $sResults = trim($aRegs[0])!=$sSource?trim($aRegs[0]):"";
+    if($sResults) {
+        $sOutput .= "<tr>"
+            ."<td>".$sSource."</td>"
+            ."<td>".$sResults."</td>"
+            .'<td><a href="https://www.babelfish.fr/dict">BabelFish</a></td>'
+            ."</tr>";
     }
 
     $sContents=$aRegs="";
-  }
-
-  // Amikai
-  if($config['at_amikai']) {
-
-    $hFile = fopen("http://standard.beta.amikai.com/amitext/"
-                   ."indexUTF8.jsp?langpair=".$config['at_amikai']
-                   ."&translate=T&sourceText=".urlencode($sSource), "r");
-
-    while ( !feof($hFile) ) $sContents .= fread($hFile, 8192);
-
-    fclose($hFile);
-
-    $aRegs = return_substring($sContents,"<textarea name=\"translatedText\" "
-                              ."rows=\"2\" cols=\"54\" wrap=\"virtual\" "
-                              ."style=\"background: #D8E6FC; color: #000;\">",
-                              "</textarea>");
-    $sAmikai = trim($aRegs[0])!=$sSource?trim($aRegs[0]):"";
-
-    if($sAmikai) {
-      $sOutput .= "<tr><td>".$sSource."</td><td>".$sAmikai
-                  ."</td><td><a href=\"http://amikai.com/demo.jsp\">"
-                  ."Amikai</a></td></tr>";
-    }
   }
 
   if($sOutput) {

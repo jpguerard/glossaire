@@ -1,6 +1,7 @@
 Glossary's coding standards
 
 Copyright (C) 2006 Jonathan Ernst
+Copyright (C) 2019 Stéphane Aulery
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -13,8 +14,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software 
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
 ===============================================================================
 
 If you want to contribute to this project, please send your patches (using diff -up) to jonathan@ernstfamily.ch
@@ -39,6 +39,12 @@ The followin "coding standards" should be followed:
   * short php tags (<? ?>) can be deactivated using php configuration directives and will probably become obsolete in the future
   * short php tags are conflicting with <?xml ?> tags used in XHTML for example
   * so please always use long tags <?php ?>
+
+====== Encoding ====== 
+  * Use UTF-8 only
+  * Use LF as end of line only
+
+
 
 // TODO: TRANSLATE THE FOLLOWING
 
@@ -170,3 +176,4 @@ function login($sUserName = 'nobody', $sUserPass = 'nobody') {
   * utilisez des noms comme "UtilisateurSysteme" pour nommer vos classes (comme en java)
   * les méthodes sont également nommée de cette façon: isHappy()
   * le reste des règles s'applique de la même façon
+

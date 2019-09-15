@@ -3,7 +3,8 @@
  * Glossary's user management page.
  *
  * Copyright (C) 2006 Jonathan Ernst
- * Copyright (C) 2006-2011 Jean-Philippe Guérard
+ * Copyright (C) 2006-2019 Jean-Philippe Guérard
+ * Copyright (C) 2019 Stéphane Aulery
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,10 +17,7 @@
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA  02110-1301  USA.
- *
+ * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 require("./includes/config.inc.php");
@@ -111,29 +109,29 @@ if($_SESSION['admin']) { ?>
 
   <h2>Ajouter un administrateur</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="new" />
+    <input type="hidden" name="action" value="new">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="ajouter">
   </form>
 
   <h2>Modifier un mot de passe</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="edit" />
+    <input type="hidden" name="action" value="edit">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="modifier">
   </form>
 
   <h2>Supprimer un utilisateur</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="delete" />
+    <input type="hidden" name="action" value="delete">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <input type="submit" value="supprimer">
   </form>
 
@@ -144,11 +142,11 @@ if($_SESSION['admin']) { ?>
 
   <h2>Modifier son mot de passe</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="edit" />
+    <input type="hidden" name="action" value="edit">
     <label for="oldpassword">Ancien mot de passe : </label>
-    <input id="oldpassword" name="oldpassword" type="password" /><br />
+    <input id="oldpassword" name="oldpassword" type="password"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="modifier">
   </form>
 
@@ -159,14 +157,15 @@ if($_SESSION['admin']) { ?>
 
   <h2>S'inscrire</h2>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type="hidden" name="action" value="new" />
+    <input type="hidden" name="action" value="new">
     <label for="username">Nom d'utilisateur : </label>
-    <input id="username" name="username" type="text" /><br />
+    <input id="username" name="username" type="text"><br>
     <label for="password">Mot de passe : </label>
-    <input id="password" name="password" type="password" /><br />
+    <input id="password" name="password" type="password"><br>
     <input type="submit" value="ajouter">
   </form>
 
 <?php }
-require("./includes/footer.inc.php"); ?>
+
+require("./includes/footer.inc.php");
 

@@ -3,7 +3,8 @@
  * Modification history page for the Glossary.
  *
  * Copyright (C) 2006 Jonathan Ernst
- * Copyright (C) 2006-2011 Jean-Philippe Guérard
+ * Copyright (C) 2006-2019 Jean-Philippe Guérard
+ * Copyright (C) 2019 Stéphane Aulery
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,15 +17,13 @@
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software 
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA  02110-1301  USA.
- *
+ * along with the Glossary.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
 require("./includes/header.inc.php");
+
 ?>
 
 <h2>Historique</h2>
@@ -69,14 +68,14 @@ if($hResult) {
       if($oRow->state != 'deleted') {
         echo "<td><a href=\"entry.php?id=".$oRow->id."\">"
              ."<img src=\"./images/edit.png\" alt=\"[modifier]\" "
-             ."title=\"modifier l'entrée\" /></a>&nbsp;"
+             ."title=\"modifier l'entrée\"></a>&nbsp;"
              ."<a href=\"javascript:confirm_delete(".$oRow->id.");\">"
              ."<img src=\"./images/delete.png\" alt=\"[supprimer]\" "
-             ."title=\"supprimer l'entrée\" /></a></td>";
+             ."title=\"supprimer l'entrée\"></a></td>";
       } else {
         echo "<td><a href=\"entry.php?action=undelete&id=".$oRow->id."\">"
              ."<img src=\"./images/undelete.png\" alt=\"[restaurer]\" "
-             ."title=\"restaure l'entrée supprimée\" /></a></td>";
+             ."title=\"restaure l'entrée supprimée\"></a></td>";
       }
     }
     echo "</tr>\n";
@@ -103,4 +102,5 @@ function confirm_delete(id) {
 
 <?php }
 
-require("./includes/footer.inc.php"); ?>
+require("./includes/footer.inc.php");
+
