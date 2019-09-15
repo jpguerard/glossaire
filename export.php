@@ -19,6 +19,7 @@
  * along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+require("./includes/constants.inc.php");
 require("./includes/config.inc.php");
 require("./includes/mysql.inc.php");
 require("./includes/header.inc.php");
@@ -32,8 +33,13 @@ demande sur la
 <a href="https://www.traduc.org/mailman/listinfo/glossaire">liste de diffusion</a></p>
 
 <ul>
-  <li><p><a href="download.php?f=csv">CSV</a></p></li>
-  <li><p><a href="download.php?f=xml">XML</a></p></li>
+<?php
+
+foreach (explode(",", GLO_EXPORT_FORMATS) as $format) {
+    ?><li><a href="download.php?f=<?php echo strtolower($format); ?>"><?php echo strtoupper($format); ?></a></li><?php
+}
+
+?>
 </ul>
 <?php
 
