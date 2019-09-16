@@ -25,12 +25,12 @@
 <div id="hdr">
   <div id="logo">
     <a href="https://traduc.org/">
-      <img src="http://www.gnomefr.org/img/spacer" alt="">
+      <img src="./images/spacer" alt="">
     </a>
   </div>
 
   <div id="banner">
-    <img src="http://www.gnomefr.org/img/spacer" alt="">
+    <img src="./images/spacer" alt="">
   </div>
   <p class="none">
   </p>
