@@ -4,7 +4,7 @@
  *
  * Copyright (C) 2006 Jonathan Ernst
  * Copyright (C) 2006-2011 Jean-Philippe Guérard
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
@@ -57,7 +57,7 @@ function return_substring($text, $openingMarker, $closingMarker) {
 
     $position += $openingMarkerLength;
 
-    if ( ($closingMarkerPosition = strpos($text, $closingMarker, $position)) 
+    if ( ($closingMarkerPosition = strpos($text, $closingMarker, $position))
          !== false ) {
        $result[] = substr($text, $position, $closingMarkerPosition - $position);
        $position = $closingMarkerPosition + $closingMarkerLength;
@@ -65,7 +65,7 @@ function return_substring($text, $openingMarker, $closingMarker) {
   }
   return $result;
 }
- 
+
 
 /**
  * Gets an automatic translation from automatic translators.
@@ -84,29 +84,31 @@ function get_automatic_translation($sSource) {
     $hFile = fopen("https://translate.google.com/translate_t?langpair="
                    .$config['at_google']."&text=".urlencode($sSource), "r");
 
-    while ( ! feof($hFile) ) $sContents .= fread($hFile, 8192);
+    if ($hFile) {
+      while ( ! feof($hFile) ) $sContents .= fread($hFile, 8192);
 
-    fclose($hFile);
+      fclose($hFile);
 
-    $aRegs = return_substring(
+      $aRegs = return_substring(
                 $sContents,
                 '<textarea name="q" rows="5" cols="45" wrap="PHYSICAL" dir="ltr>',
                 "</textarea>");
 
-    $sGoogle = trim($aRegs[0])!=$sSource?trim(mb_convert_encoding($aRegs[0],
+      $sGoogle = trim($aRegs[0])!=$sSource?trim(mb_convert_encoding($aRegs[0],
                                               "UTF-8" ,"ISO-8859-1")):"";
-    if($sGoogle) {
+      if($sGoogle) {
 
-      $sOutput .= "<tr><td>".$sSource."</td><td>".$sGoogle."</td>"
+        $sOutput .= "<tr><td>".$sSource."</td><td>".$sGoogle."</td>"
           ."<td>"
           .'<a href="https://translate.google.com/translate_t">Google</a>'
           ."</td></tr>";
 
+      }
     }
     $sContents=$aRegs="";
   }
 
-  // Altavista babelfish 
+  // Altavista babelfish
   if($config['at_babelfish_dst']) {
       $hFile = fopen(
           "https://www.babelfish.fr/dict"
@@ -120,7 +122,7 @@ function get_automatic_translation($sSource) {
 
     $aRegs = return_substring($sContents,"<input type=hidden "
                               ."name=\"q\" value=\"","\">");
-    
+
     $sResults = trim($aRegs[0])!=$sSource?trim($aRegs[0]):"";
     if($sResults) {
         $sOutput .= "<tr>"
